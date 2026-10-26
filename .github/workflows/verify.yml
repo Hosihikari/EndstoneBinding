@@ -46,8 +46,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: EndstoneBinding
 
       - name: Generator
         uses: actions/checkout@v4
@@ -114,11 +112,11 @@ jobs:
           rm -rf llvm/share llvm/lib/clang/*/lib
 
       - name: Build frontend
-        working-directory: EndstoneBinding
+        working-directory: BindingGenerator
         run: ./frontend/build.sh --llvm-root "${{ github.workspace }}/llvm"
 
       - name: Generate Linux IR
-        working-directory: EndstoneBinding
+        working-directory: BindingGenerator
         run: |
           ./frontend/run-endstone.sh \
             --endstone-root "${{ github.workspace }}/endstone" \
@@ -136,7 +134,7 @@ jobs:
           retention-days: 3
 
       - name: Emit from Linux IR
-        working-directory: EndstoneBinding
+        working-directory: BindingGenerator
         run: |
           dotnet run --project src/Hosihikari.Bindings.Generator/Hosihikari.Bindings.Generator.csproj -c Release -- \
             emit artifacts/endstone-linux-ir/ir-manifest.json \
@@ -147,7 +145,7 @@ jobs:
             --virtual-dispatch
 
       - name: Compare generated Interop
-        working-directory: EndstoneBinding
+        working-directory: BindingGenerator
         run: diff -ru ../src/Hosihikari.Bindings.Endstone.Interop/Generated artifacts/emitted-linux/interop/endstone
 
       - name: Build Linux shim
