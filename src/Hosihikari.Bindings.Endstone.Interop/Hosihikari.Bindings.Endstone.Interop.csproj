@@ -15,14 +15,14 @@
     <Authors>Hosihikari</Authors>
     <Description>CI-generated native-style .NET Interop for the Endstone C++ API.</Description>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/Hosihikari/Bindings.Endstone</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Hosihikari/EndstoneBinding</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>minecraft;bedrock;bds;endstone;interop;hosihikari</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="$(AbiProjectPath)" Condition="'$(AbiProjectPath)' != ''" />
-    <ProjectReference Include="../../../Bindings.Abi/src/Hosihikari.Bindings.Abi/Hosihikari.Bindings.Abi.csproj" Condition="'$(AbiProjectPath)' == ''" />
+    <ProjectReference Include="../../../BindingAbi/src/Hosihikari.Bindings.Abi/Hosihikari.Bindings.Abi.csproj" Condition="'$(AbiProjectPath)' == ''" />
   </ItemGroup>
 
 </Project>

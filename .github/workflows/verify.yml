@@ -14,33 +14,33 @@ jobs:
       - name: IR contract
         uses: actions/checkout@v4
         with:
-          repository: Hosihikari/Bindings.Ir
-          path: Bindings.Ir
+          repository: Hosihikari/BindingIr
+          path: BindingIr
 
       - name: Generator
         uses: actions/checkout@v4
         with:
-          repository: Hosihikari/Bindings.Generator
-          path: Bindings.Generator
+          repository: Hosihikari/BindingGenerator
+          path: BindingGenerator
 
       - name: ABI contract
         uses: actions/checkout@v4
         with:
-          repository: Hosihikari/Bindings.Abi
-          path: Bindings.Abi
+          repository: Hosihikari/BindingAbi
+          path: BindingAbi
 
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
 
       - name: Build
-        run: dotnet build Hosihikari.Bindings.Endstone.slnx -c Release -p:AbiProjectPath=${{ github.workspace }}/Bindings.Abi/src/Hosihikari.Bindings.Abi/Hosihikari.Bindings.Abi.csproj
+        run: dotnet build Hosihikari.Bindings.Endstone.slnx -c Release -p:AbiProjectPath=${{ github.workspace }}/BindingAbi/src/Hosihikari.Bindings.Abi/Hosihikari.Bindings.Abi.csproj
 
       - name: Verify generated sources
         run: python3 scripts/verify_generated.py
 
       - name: Validate coverage contract
-        run: dotnet run --project Bindings.Generator/src/Hosihikari.Bindings.Generator/Hosihikari.Bindings.Generator.csproj -c Release -- validate-coverage coverage/summary.json coverage/manifest.jsonl
+        run: dotnet run --project BindingGenerator/src/Hosihikari.Bindings.Generator/Hosihikari.Bindings.Generator.csproj -c Release -- validate-coverage coverage/summary.json coverage/manifest.jsonl
 
   linux-shim:
     runs-on: ubuntu-latest
@@ -50,20 +50,20 @@ jobs:
       - name: Generator
         uses: actions/checkout@v4
         with:
-          repository: Hosihikari/Bindings.Generator
-          path: Bindings.Generator
+          repository: Hosihikari/BindingGenerator
+          path: BindingGenerator
 
       - name: IR contract
         uses: actions/checkout@v4
         with:
-          repository: Hosihikari/Bindings.Ir
-          path: Bindings.Ir
+          repository: Hosihikari/BindingIr
+          path: BindingIr
 
       - name: ABI contract
         uses: actions/checkout@v4
         with:
-          repository: Hosihikari/Bindings.Abi
-          path: Bindings.Abi
+          repository: Hosihikari/BindingAbi
+          path: BindingAbi
 
       - name: Endstone headers
         uses: actions/checkout@v4
@@ -130,7 +130,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: endstone-linux-x64-server-ir
-          path: Bindings.Generator/artifacts/endstone-linux-ir
+          path: BindingGenerator/artifacts/endstone-linux-ir
           retention-days: 3
 
       - name: Emit from Linux IR
@@ -140,7 +140,7 @@ jobs:
             emit artifacts/endstone-linux-ir/ir-manifest.json \
             artifacts/endstone-linux-ir \
             artifacts/emitted-linux \
-            --abi-header ../Bindings.Abi/native/hosihikari_abi.h \
+            --abi-header ../BindingAbi/native/hosihikari_abi.h \
             --native-root ../endstone \
             --virtual-dispatch
 
@@ -154,6 +154,6 @@ jobs:
             --endstone-root endstone \
             --expected-lite-include expected-lite/include \
             --nlohmann-include nlohmann-json/include \
-            --generated-include Bindings.Generator/artifacts/endstone-generated/include \
-            --shim-source Bindings.Generator/artifacts/emitted-linux/shim/linux-x64-server/endstone/binding_table.cpp \
+            --generated-include BindingGenerator/artifacts/endstone-generated/include \
+            --shim-source BindingGenerator/artifacts/emitted-linux/shim/linux-x64-server/endstone/binding_table.cpp \
             --output artifacts/native/libHosihikari.Bindings.Endstone.Shim.so
