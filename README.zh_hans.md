@@ -1,6 +1,6 @@
 # Hosihikari.Bindings.Endstone
 
-**Endstone** C++ 能力面的星光投影：CI 生成的原生风格 **Interop** 与原生 **binding shim**。
+**Endstone** C++ 互操作面的星光投影：CI 生成的原生风格 **Interop** 与原生 **绑定垫片**。
 
 ## 边界
 
@@ -50,7 +50,7 @@ powershell -File native/BindingShim/build.ps1
 - `Hosihikari/BindingIr`：schema、模型、读写器与校验器。
 - `Hosihikari/BindingAbi`：共享 ABI 值类型、加载器与原生头文件。
 - `Hosihikari/BindingGenerator`：libTooling 前端与发射器。
-- `Hosihikari/LeviLaminaBinding`：LeviLamina 表面。
+- `Hosihikari/LeviLaminaBinding`：LeviLamina 互操作面。
 
 ## 许可证
 
