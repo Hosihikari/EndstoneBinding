@@ -24,8 +24,8 @@ shim 以 `--virtual-dispatch` 模式发射：inline 成员、虚方法（含纯�
 前端解析 `include/endstone/endstone.hpp` 与 Endstone 依赖头：
 
 ```shell
-powershell -File ../BindingGenerator/frontend/run-endstone.ps1
-powershell -File scripts/regenerate.ps1 -IrDirectory ..\Bindings.Generator\artifacts\endstone-ir -AbiRoot ..\Bindings.Abi
+powershell -File ../Binding.Generator/frontend/run-endstone.ps1
+powershell -File scripts/regenerate.ps1 -IrDirectory ..\Binding.Generator\artifacts\endstone-ir -AbiRoot ..\Binding.Abi
 ```
 
 ## 构建
