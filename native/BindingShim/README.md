@@ -19,7 +19,7 @@ build.ps1                                    clang-cl build against the Endstone
 build.sh                                     g++/clang++ build for Linux
 ```
 
-The committed `generated/win-x64-server/endstone` sources are produced by `Hosihikari/BindingGenerator` with `--virtual-dispatch`; `scripts/regenerate.ps1` and `scripts/verify_generated.py` maintain that integration. The `linux-x64-server` configuration is generated from the Endstone headers on Linux at CI time and is not committed.
+The committed `generated/win-x64-server/endstone` sources are produced by `HosihikariProjection/BindingGenerator` with `--virtual-dispatch`; `scripts/regenerate.ps1` and `scripts/verify_generated.py` maintain that integration. The `linux-x64-server` configuration is generated from the Endstone headers on Linux at CI time and is not committed.
 
 ## Linux build
 
