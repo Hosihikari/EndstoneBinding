@@ -1,11 +1,14 @@
 param(
     [Parameter(Mandatory = $true)]
     [string]$IrDirectory,
-    [string]$EndstoneRoot = (Join-Path $PSScriptRoot "..\..\Third\Endstone"),
+    [string]$EndstoneRoot = "",
     [string]$GeneratorRoot = "",
     [string]$Output = "artifacts/regenerated",
     [string]$AbiRoot = ""
 )
+if ([string]::IsNullOrWhiteSpace($EndstoneRoot)) {
+    $EndstoneRoot = Join-Path $PSScriptRoot "..\..\Third\Endstone"
+}
 
 $ErrorActionPreference = "Stop"
 
