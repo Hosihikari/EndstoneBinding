@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory = $true)]
     [string]$IrDirectory,
-    [string]$EndstoneRoot = "C:\Users\root\source\repos\hosihikari\Endstone",
+    [string]$EndstoneRoot = (Join-Path $PSScriptRoot "..\..\Third\Endstone"),
     [string]$GeneratorRoot = "",
     [string]$Output = "artifacts/regenerated",
     [string]$AbiRoot = ""
