@@ -38,10 +38,7 @@ public sealed unsafe partial class Color : global::System.IDisposable
         return __hs_handle;
     }
 
-    public static int BIT_MASK
-    {
-        get => NativeMethods.TablePtr->hs_get_e51661ad();
-    }
+    public const int BIT_MASK = 255;
 
     public static Color Create(byte red, byte green, byte blue, byte alpha)
     {
@@ -54,10 +51,7 @@ public sealed unsafe partial class Color : global::System.IDisposable
         return new Color((nint)handle);
     }
 
-    public static int DEFAULT_ALPHA
-    {
-        get => NativeMethods.TablePtr->hs_get_7acd5cdd();
-    }
+    public const int DEFAULT_ALPHA = 255;
 
     public int asABGR()
     {

@@ -488,9 +488,7 @@ public static unsafe class NativeMethods
         public delegate* unmanaged[Cdecl]<void*> hs_get_178f4963;
         public delegate* unmanaged[Cdecl]<void*, global::Hosihikari.Bindings.Abi.StringView> hs_method_a8e1a5dd;
         public delegate* unmanaged[Cdecl]<void*, void> hs_destroy_5fd175cd;
-        public delegate* unmanaged[Cdecl]<int> hs_get_e51661ad;
         public delegate* unmanaged[Cdecl]<byte, byte, byte, byte, void*> hs_create_16a3a50e;
-        public delegate* unmanaged[Cdecl]<int> hs_get_7acd5cdd;
         public delegate* unmanaged[Cdecl]<void*, int> hs_method_c6e20247;
         public delegate* unmanaged[Cdecl]<void*, int> hs_method_3a6d50d8;
         public delegate* unmanaged[Cdecl]<void*, int> hs_method_fe1bd8a8;

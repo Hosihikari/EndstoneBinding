@@ -1,12 +1,12 @@
 {
     "generator":  "Hosihikari.Bindings.Generator 0.3.0 (IR 1.6.0)",
     "irVersion":  "1.6.0",
-    "irManifestSha256":  "sha256:f13ea7d4b7260bb57f1f1b5e501d3ae60dfd56b10dec27192e7c1be58baa7dc9",
+    "irManifestSha256":  "sha256:afa5ad8887fe93bdc01f3ca7ad08db3b6a3d09eb2a995e0bc859c03bd244c44e",
     "carrierCommit":  "b4aaa87d2c5305e7d340168f824ac2e2ea722e44",
     "surface":  "endstone",
     "configuration":  "win-x64-server",
     "mode":  "virtual-dispatch",
     "tableVersion":  1,
-    "functions":  2422,
-    "coverageManifestSha256":  "sha256:72395a9f2ae790ad27dde43d392e92537d4712a0e71211e6b3a1ed434242cd59"
+    "functions":  2420,
+    "coverageManifestSha256":  "sha256:99145b9229303c26f3f589ab60936a5278d118b889b93f53c0daeba7525e8c78"
 }
