@@ -11,6 +11,36 @@ public static unsafe partial class Functions
         return NativeMethods.TablePtr->hs_function_f354b6c5((void*)u.Handle);
     }
 
+    public static bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    {
+        return NativeMethods.TablePtr->hs_function_ae183f48((void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
+    public static bool operator_greater(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    {
+        return NativeMethods.TablePtr->hs_function_c6b9965a((void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
+    public static bool operator_greater_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    {
+        return NativeMethods.TablePtr->hs_function_63c35153((void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
+    public static bool operator_less(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    {
+        return NativeMethods.TablePtr->hs_function_67ff5e44((void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
+    public static bool operator_less_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    {
+        return NativeMethods.TablePtr->hs_function_5415ddda((void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
+    public static bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    {
+        return NativeMethods.TablePtr->hs_function_d7c215a4((void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
     public static void swap(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
     {
         NativeMethods.TablePtr->hs_function_271bdbd6((void*)lhs.Handle, (void*)rhs.Handle);
