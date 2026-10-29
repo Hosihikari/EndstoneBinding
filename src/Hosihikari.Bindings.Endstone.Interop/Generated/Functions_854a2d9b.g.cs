@@ -11,9 +11,19 @@ public static unsafe partial class Functions
         return NativeMethods.TablePtr->hs_function_f354b6c5((void*)u.Handle);
     }
 
-    public static bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    public static bool operator_equal_8794162d(global::Hosihikari.Bindings.Endstone.Interop.endstone.ListTag a, global::Hosihikari.Bindings.Endstone.Interop.endstone.ListTag b)
+    {
+        return NativeMethods.TablePtr->hs_function_8794162d((void*)a.Handle, (void*)b.Handle) != 0;
+    }
+
+    public static bool operator_equal_ae183f48(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
     {
         return NativeMethods.TablePtr->hs_function_ae183f48((void*)lhs.Handle, (void*)rhs.Handle) != 0;
+    }
+
+    public static bool operator_equal_fe75dcdf(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag a, global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag b)
+    {
+        return NativeMethods.TablePtr->hs_function_fe75dcdf((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_greater(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
@@ -36,7 +46,17 @@ public static unsafe partial class Functions
         return NativeMethods.TablePtr->hs_function_5415ddda((void*)lhs.Handle, (void*)rhs.Handle) != 0;
     }
 
-    public static bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
+    public static bool operator_not_equal_1b823404(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag a, global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag b)
+    {
+        return NativeMethods.TablePtr->hs_function_1b823404((void*)a.Handle, (void*)b.Handle) != 0;
+    }
+
+    public static bool operator_not_equal_273dc666(global::Hosihikari.Bindings.Endstone.Interop.endstone.ListTag a, global::Hosihikari.Bindings.Endstone.Interop.endstone.ListTag b)
+    {
+        return NativeMethods.TablePtr->hs_function_273dc666((void*)a.Handle, (void*)b.Handle) != 0;
+    }
+
+    public static bool operator_not_equal_d7c215a4(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID lhs, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
     {
         return NativeMethods.TablePtr->hs_function_d7c215a4((void*)lhs.Handle, (void*)rhs.Handle) != 0;
     }
