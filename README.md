@@ -1,5 +1,7 @@
 # Hosihikari.Bindings.Endstone
 
+[English](README.md) | [简体中文](README.zh_hans.md)
+
 The **Endstone** C++ interop surface for the Hosihikari projection: a CI-generated native-style **Interop** and the native **binding shim**.
 
 ## Boundary

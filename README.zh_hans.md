@@ -1,5 +1,7 @@
 # Hosihikari.Bindings.Endstone
 
+[English](README.md) | [简体中文](README.zh_hans.md)
+
 **Endstone** C++ 互操作面的星光投影：CI 生成的原生风格 **Interop** 与原生 **绑定垫片**。
 
 ## 边界
@@ -11,11 +13,11 @@
 
 ## 当前状态
 
-- Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 217 个生成 C# 文件。
-- 绑定垫片：`native/BindingShim/generated/win-x64-server/endstone/` 中 2,364 个函数。
-- 覆盖：319 条声明、1,831 条成员已绑定。
+- Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 245 个生成 C# 文件。
+- 绑定垫片：`native/BindingShim/generated/win-x64-server/endstone/` 中 2,422 个函数。
+- 覆盖：307 条声明、1,968 条成员已绑定。
 
-shim 以 `--virtual-dispatch` 模式发射：inline 成员、虚方法（含纯虚接口）、符合条件的模板实例、inline/constexpr 静态字段、`std::optional<T>` 参数/结果、`std::vector<T>` 参数/结果、`std::unique_ptr<T>` 结果、`std::shared_ptr<T>` 结果、`nonstd::expected_lite::expected<T, std::string>` 结果、`std::variant<T...>` 参数/结果、`NotNull`/`Nullable` 共享句柄、借用指针集合、拥有/共享元素数组、chrono 时间值、返回的 `std::function` 可调用句柄、映射为字典的 `unordered_map` 参数与结果、作为共享句柄的 `shared_ptr` 参数、作为所有权转移的 `unique_ptr` 参数、通过 holder 支撑的借用字符串标识符、作为 `Functions` 静态类的命名空间级 inline 函数以及经类型化控件 variant 的 `ModalForm` 控件被投影；非虚 out-of-line 成员保留 Interop stub，并在 `NotSupportedException` 中给出原因，同时标记 `[Obsolete]`，调用时产生 CS0618。载体拥有的接口对象不释放；只有 shim 创建的对象生成释放器。
+shim 以 `--virtual-dispatch` 模式发射：inline 成员、虚方法（含纯虚接口）、符合条件的模板实例、inline/constexpr 静态字段、`std::optional<T>` 参数/结果、`std::vector<T>` 参数/结果、`std::unique_ptr<T>` 结果、`std::shared_ptr<T>` 结果、`nonstd::expected_lite::expected<T, std::string>` 结果、`std::variant<T...>` 参数/结果、`NotNull`/`Nullable` 共享句柄、借用指针集合、拥有/共享元素数组、chrono 时间值、返回的 `std::function` 可调用句柄、映射为字典的 `unordered_map` 参数与结果、作为共享句柄的 `shared_ptr` 参数、作为所有权转移的 `unique_ptr` 参数、通过 holder 支撑的借用字符串标识符、作为 `Functions` 静态类的命名空间级 inline 函数、作为 `operator_equal` 形式静态方法的命名空间级比较运算符、带求值结果的 C# 枚举声明以及经类型化控件 variant 的 `ModalForm` 控件被投影；非虚 out-of-line 成员保留 Interop stub，并在 `NotSupportedException` 中给出原因，同时标记 `[Obsolete]`，调用时产生 CS0618；没有可用成员的类型保留类型身份并带同一标记。载体拥有的接口对象不释放；只有 shim 创建的对象生成释放器。
 
 `NativeMethods.Load(path)` 加载 shim；`NativeMethods.GetServer()` 返回载体的 `endstone::Server` 句柄，可用生成的 `Server` 类包装。
 
@@ -35,7 +37,7 @@ dotnet build Hosihikari.Bindings.Endstone.slnx -c Release
 powershell -File native/BindingShim/build.ps1
 ```
 
-原生构建使用 clang-cl、C++20、MSVC STL 与本地工具链已有的 expected-lite/nlohmann_json 头；不链接 `endstone_core`，调用通过载体提供的虚接口分发。
+生成的 shim 目录包含来自 `BindingAbi` 的 `hosihikari_abi.h`，原生构建因此自包含。原生构建使用 clang-cl、C++20、MSVC STL 与本地工具链已有的 expected-lite/nlohmann_json 头；不链接 `endstone_core`，调用通过载体提供的虚接口分发。
 
 ## 基准
 
