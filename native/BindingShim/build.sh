@@ -102,7 +102,7 @@ fi
 
 version="$(sed -n 's/.*project[[:space:]]*([[:space:]]*endstone[[:space:]]*VERSION[[:space:]]*\([0-9][0-9.]*\).*/\1/p' \
     "$endstone_root/include/CMakeLists.txt" | head -n 1)"
-version="${version:-0.11.14}"
+version="${version:-0.11.15}"
 IFS='.' read -r major minor patch <<EOF
 $version
 EOF

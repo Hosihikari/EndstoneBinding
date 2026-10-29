@@ -5,7 +5,7 @@ Loads the committed BindingShim inside a real Endstone server through a small C+
 ## Requirements
 
 - Windows x64.
-- Endstone 0.11.14 headers (a checkout or `git archive` of the tag).
+- Endstone 0.11.15 headers (a checkout or `git archive` of the tag).
 - An Endstone server folder prepared by `python -m endstone` (the plugin folder is created on first run).
 - The `endstone` Python package installed in the Python environment passed to the script.
 - expected-lite and nlohmann_json headers available under the local xmake package cache.
@@ -16,7 +16,7 @@ Loads the committed BindingShim inside a real Endstone server through a small C+
 ```shell
 powershell -File scripts/run-runtime-smoke.ps1 `
   -ServerRoot C:\path\to\endstone-server `
-  -EndstoneRoot C:\path\to\endstone-v0.11.14 `
+  -EndstoneRoot C:\path\to\endstone-v0.11.15 `
   -Python C:\path\to\venv\Scripts\python.exe
 ```
 
@@ -54,9 +54,9 @@ Expected result:
 load=ok
 server.match=true
 expected_name=Endstone
-expected_version=0.11.14
+expected_version=0.11.15
 name=Endstone
-version=0.11.14
+version=0.11.15
 function.hash=ok
 translatable.string_vector=ok
 arraytag.int_vector=ok

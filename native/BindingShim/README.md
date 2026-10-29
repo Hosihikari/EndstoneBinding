@@ -23,7 +23,7 @@ The committed `generated/win-x64-server/endstone` sources are produced by `Hosih
 
 ## Linux build
 
-The CI `linux-shim` job builds the libTooling frontend, generates `linux-x64-server` IR from Endstone `v0.11.14`, emits the Interop and shim from that IR, compares the emitted Interop with the committed Windows-IR output, and compiles the shim.
+The CI `linux-shim` job builds the libTooling frontend, generates `linux-x64-server` IR from Endstone `v0.11.15`, emits the Interop and shim from that IR, compares the emitted Interop with the committed Windows-IR output, and compiles the shim.
 
 `build.sh` compiles a generated `binding_table.cpp` against an Endstone checkout and the expected-lite/nlohmann_json headers. It generates `artifacts/endstone-generated/include/endstone/version.h` from the Endstone `include/CMakeLists.txt`, links a position-independent shared library, and checks that both entry points are exported.
 

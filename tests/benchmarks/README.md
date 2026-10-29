@@ -7,13 +7,13 @@ Loads the BindingShim inside a real Endstone server and reports the managed-to-n
 ```shell
 powershell -File scripts/run-benchmarks.ps1 `
   -ServerRoot C:\path\to\endstone-server `
-  -EndstoneRoot C:\path\to\endstone-v0.11.14 `
+  -EndstoneRoot C:\path\to\endstone-v0.11.15 `
   -Python C:\path\to\venv\Scripts\python.exe
 ```
 
 The script builds the solution, the Windows shim, the managed benchmark assembly, and the native host plugin. It installs the plugin under `plugins/`, copies the managed payload and `nethost.dll` to `plugins/hosihikari-benchmarks/`, starts Endstone with `--no-interactive`, and waits for `data/hosihikari/shim-benchmarks/benchmarks.txt`.
 
-Requirements: Windows x64, Endstone 0.11.14 headers, an Endstone server prepared by `python -m endstone`, the `endstone` Python package in that environment, expected-lite/nlohmann_json under the local xmake cache, clang-cl, and the .NET 10 host pack.
+Requirements: Windows x64, Endstone 0.11.15 headers, an Endstone server prepared by `python -m endstone`, the `endstone` Python package in that environment, expected-lite/nlohmann_json under the local xmake cache, clang-cl, and the .NET 10 host pack.
 
 ## Measurements
 
