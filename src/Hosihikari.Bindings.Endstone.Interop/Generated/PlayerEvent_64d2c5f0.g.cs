@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class PlayerEvent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerEvent(nint handle) : this(handle, true) { }
 
     internal PlayerEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerEvent Borrow(nint handle) => new PlayerEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class PlayerEvent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -44,7 +44,7 @@ public sealed unsafe partial class PlayerEvent
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player getPlayer()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)NativeMethods.TablePtr->hs_method_3db1e9dc((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)NativeMethods.TablePtr->C0.hs_method_3db1e9dc((void*)__hosihikari_shim_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
@@ -53,150 +53,150 @@ public sealed unsafe partial class PlayerEvent
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_56f879ae((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_56f879ae((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_? TryAsCancellable_endstone__PlayerEvent_()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_4e48a6d5((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_4e48a6d5((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerBedEnterEvent? TryAsPlayerBedEnterEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_0203f239((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_0203f239((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerBedEnterEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerBedLeaveEvent? TryAsPlayerBedLeaveEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_65b028b9((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_65b028b9((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerBedLeaveEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerChatEvent? TryAsPlayerChatEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_eed69f10((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_eed69f10((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerChatEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerCommandEvent? TryAsPlayerCommandEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_6b6b7074((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_6b6b7074((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerCommandEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDimensionChangeEvent? TryAsPlayerDimensionChangeEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_fe5e4580((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_fe5e4580((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDimensionChangeEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDropItemEvent? TryAsPlayerDropItemEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_65a60a87((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_65a60a87((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDropItemEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEmoteEvent? TryAsPlayerEmoteEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_5eff9e1a((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_5eff9e1a((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEmoteEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerGameModeChangeEvent? TryAsPlayerGameModeChangeEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_a2f7633a((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_a2f7633a((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerGameModeChangeEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerInteractActorEvent? TryAsPlayerInteractActorEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_4b5ed8e1((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_4b5ed8e1((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerInteractActorEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerInteractEvent? TryAsPlayerInteractEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_3a5ebe85((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_3a5ebe85((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerInteractEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerItemConsumeEvent? TryAsPlayerItemConsumeEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_53f72038((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_53f72038((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerItemConsumeEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerItemHeldEvent? TryAsPlayerItemHeldEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_000ed956((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_000ed956((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerItemHeldEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJoinEvent? TryAsPlayerJoinEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_a0ac2f82((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_a0ac2f82((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJoinEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJumpEvent? TryAsPlayerJumpEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_9a8c299d((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_9a8c299d((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJumpEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerKickEvent? TryAsPlayerKickEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_4ee6fde6((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_4ee6fde6((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerKickEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerLoginEvent? TryAsPlayerLoginEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_6fcfcb10((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_6fcfcb10((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerLoginEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerMoveEvent? TryAsPlayerMoveEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_5bdf260a((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_5bdf260a((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerMoveEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerPickupItemEvent? TryAsPlayerPickupItemEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_a7f845fb((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_a7f845fb((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerPickupItemEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerPortalEvent? TryAsPlayerPortalEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_b3241dbe((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_b3241dbe((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerPortalEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerQuitEvent? TryAsPlayerQuitEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_94a3f305((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_94a3f305((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerQuitEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerRespawnEvent? TryAsPlayerRespawnEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_5335f95d((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_5335f95d((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerRespawnEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerSkinChangeEvent? TryAsPlayerSkinChangeEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_72ad1515((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_72ad1515((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerSkinChangeEvent((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerTeleportEvent? TryAsPlayerTeleportEvent()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_683fbb67((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_683fbb67((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerTeleportEvent((nint)__hs_handle, false) : null;
     }
 }

@@ -6,18 +6,18 @@ namespace Hosihikari.Bindings.Endstone.Interop;
 
 public sealed unsafe class Variant_228e24a8 : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
 
-    public Variant_228e24a8(nint handle) => _handle = handle;
+    public Variant_228e24a8(nint handle) => __hosihikari_shim_handle = handle;
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     public static Variant_228e24a8 CreateString(string value)
     {
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(value);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->hs_variant_228e24a8_create_0(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->C0.hs_variant_228e24a8_create_0(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe class Variant_228e24a8 : global::System.IDisposable
 
     public static Variant_228e24a8 CreateTranslatable(global::Hosihikari.Bindings.Endstone.Interop.endstone.Translatable value)
     {
-        var handle = NativeMethods.TablePtr->hs_variant_228e24a8_create_1((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_variant_228e24a8_create_1((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,7 +36,7 @@ public sealed unsafe class Variant_228e24a8 : global::System.IDisposable
         return new Variant_228e24a8((nint)handle);
     }
 
-    public int Index => NativeMethods.TablePtr->hs_variant_228e24a8_index((void*)_handle);
+    public int Index => NativeMethods.TablePtr->C0.hs_variant_228e24a8_index((void*)__hosihikari_shim_handle);
 
     public bool IsString => Index == 0;
 
@@ -49,7 +49,7 @@ public sealed unsafe class Variant_228e24a8 : global::System.IDisposable
             return null;
         }
 
-        var __hs_view = NativeMethods.TablePtr->hs_variant_228e24a8_get_0((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_variant_228e24a8_get_0((void*)__hosihikari_shim_handle);
         return __hs_view.Data == null ? string.Empty : global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -60,16 +60,16 @@ public sealed unsafe class Variant_228e24a8 : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->hs_variant_228e24a8_get_1((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_variant_228e24a8_get_1((void*)__hosihikari_shim_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Translatable((nint)__hs_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
-            NativeMethods.TablePtr->hs_variant_228e24a8_destroy((void*)_handle);
-            _handle = 0;
+            NativeMethods.TablePtr->C0.hs_variant_228e24a8_destroy((void*)__hosihikari_shim_handle);
+            __hosihikari_shim_handle = 0;
         }
     }
 }

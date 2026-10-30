@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.nbt;
 
 public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ArrayTag_int_(nint handle) : this(handle, true) { }
 
     internal ArrayTag_int_(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ArrayTag_int_ Borrow(nint handle) => new ArrayTag_int_(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static ArrayTag_int_ Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_f9753a41();
+        var handle = NativeMethods.TablePtr->C0.hs_create_f9753a41();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,7 +57,7 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
     {
         fixed (int* __hs_vectorData0 = v)
         {
-            var handle = NativeMethods.TablePtr->hs_create_a2c84490(__hs_vectorData0, (nuint)(v?.Length ?? 0));
+            var handle = NativeMethods.TablePtr->C0.hs_create_a2c84490(__hs_vectorData0, (nuint)(v?.Length ?? 0));
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -69,12 +69,12 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
 
     public nint at_47e2aef5(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_47e2aef5((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_47e2aef5((void*)__hosihikari_shim_handle, i);
     }
 
     public nint at_351288e4(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_351288e4((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_351288e4((void*)__hosihikari_shim_handle, i);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
@@ -95,22 +95,22 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
 
     public void clear()
     {
-        NativeMethods.TablePtr->hs_method_e58a485e((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_e58a485e((void*)__hosihikari_shim_handle);
     }
 
     public nint data_4525430b()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4525430b((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_4525430b((void*)__hosihikari_shim_handle);
     }
 
     public nint data_bc70fe66()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bc70fe66((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_bc70fe66((void*)__hosihikari_shim_handle);
     }
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->hs_method_5676c89d((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_5676c89d((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
@@ -131,39 +131,39 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
 
     public nint operator_index_ba0c8eb2(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ba0c8eb2((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_ba0c8eb2((void*)__hosihikari_shim_handle, i);
     }
 
     public nint operator_index_b98815f4(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b98815f4((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_b98815f4((void*)__hosihikari_shim_handle, i);
     }
 
     public void push_back(int v)
     {
-        NativeMethods.TablePtr->hs_method_e1bf83e1((void*)_handle, v);
+        NativeMethods.TablePtr->C0.hs_method_e1bf83e1((void*)__hosihikari_shim_handle, v);
     }
 
     public ulong size()
     {
-        return NativeMethods.TablePtr->hs_method_9510ddb5((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_9510ddb5((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase AsTagBase()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase((nint)NativeMethods.TablePtr->hs_cast_ffee15db((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase((nint)NativeMethods.TablePtr->C0.hs_cast_ffee15db((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_0a74479a((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_0a74479a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

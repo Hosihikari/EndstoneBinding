@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Header : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Header(nint handle) : this(handle, true) { }
 
     internal Header(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Header Borrow(nint handle) => new Header(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class Header : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static Header Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_bd8f2c0e();
+        var handle = NativeMethods.TablePtr->C0.hs_create_bd8f2c0e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class Header : global::System.IDisposable
 
     public static Header Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        var handle = NativeMethods.TablePtr->hs_create_1dfe588b((void*)label.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_1dfe588b((void*)label.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,24 +62,24 @@ public sealed unsafe partial class Header : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_94ba2884((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->C0.hs_method_94ba2884((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Header setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Header((nint)NativeMethods.TablePtr->hs_method_a434230f((void*)_handle, (void*)label.Handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Header((nint)NativeMethods.TablePtr->C0.hs_method_a434230f((void*)__hosihikari_shim_handle, (void*)label.Handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_50f38d54((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_50f38d54((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

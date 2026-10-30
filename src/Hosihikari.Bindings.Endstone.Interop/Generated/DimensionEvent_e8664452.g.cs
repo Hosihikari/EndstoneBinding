@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class DimensionEvent
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public DimensionEvent(nint handle) : this(handle, true) { }
 
     internal DimensionEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static DimensionEvent Borrow(nint handle) => new DimensionEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class DimensionEvent
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -44,16 +44,16 @@ public sealed unsafe partial class DimensionEvent
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getDimension()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_c99ca150((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->C0.hs_method_c99ca150((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_9cffdec4((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_9cffdec4((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.LevelEvent AsLevelEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.LevelEvent((nint)NativeMethods.TablePtr->hs_cast_33ed9d13((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.LevelEvent((nint)NativeMethods.TablePtr->C0.hs_cast_33ed9d13((void*)__hosihikari_shim_handle), false);
     }
 }

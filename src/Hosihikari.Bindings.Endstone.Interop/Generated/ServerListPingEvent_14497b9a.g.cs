@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class ServerListPingEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServerListPingEvent(nint handle) : this(handle, true) { }
 
     internal ServerListPingEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServerListPingEvent Borrow(nint handle) => new ServerListPingEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_68525df2();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_68525df2();
     }
 
     public static ServerListPingEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, string motd, int network_protocol_version, string minecraft_version_network, int num_players, int max_players, string server_guid, string level_name, int game_mode, int local_port, int local_port_v6)
@@ -97,7 +97,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
                 {
                     fixed (byte* __hs_stringData7 = __hs_stringBytes7)
                     {
-                        var handle = NativeMethods.TablePtr->hs_create_8a74906d((void*)address.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, network_protocol_version, __hs_stringData3, (nuint)__hs_stringByteCount3, num_players, max_players, __hs_stringData6, (nuint)__hs_stringByteCount6, __hs_stringData7, (nuint)__hs_stringByteCount7, game_mode, local_port, local_port_v6);
+                        var handle = NativeMethods.TablePtr->C0.hs_create_8a74906d((void*)address.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, network_protocol_version, __hs_stringData3, (nuint)__hs_stringByteCount3, num_players, max_players, __hs_stringData6, (nuint)__hs_stringByteCount6, __hs_stringData7, (nuint)__hs_stringByteCount7, game_mode, local_port, local_port_v6);
                         if (handle == null)
                         {
                             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -112,72 +112,72 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress getAddress()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->hs_method_fff45c6f((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->C0.hs_method_fff45c6f((void*)__hosihikari_shim_handle));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_63935e73((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_63935e73((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getGameMode()
     {
-        return NativeMethods.TablePtr->hs_method_64a34151((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_64a34151((void*)__hosihikari_shim_handle);
     }
 
     public string getLevelName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7029d579((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_7029d579((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getLocalPort()
     {
-        return NativeMethods.TablePtr->hs_method_e72124b9((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_e72124b9((void*)__hosihikari_shim_handle);
     }
 
     public int getLocalPortV6()
     {
-        return NativeMethods.TablePtr->hs_method_870dfec1((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_870dfec1((void*)__hosihikari_shim_handle);
     }
 
     public int getMaxPlayers()
     {
-        return NativeMethods.TablePtr->hs_method_7b19ec4f((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_7b19ec4f((void*)__hosihikari_shim_handle);
     }
 
     public string getMinecraftVersionNetwork()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_19b5f2ad((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_19b5f2ad((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMotd()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_5fa8bbd6((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_5fa8bbd6((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNetworkProtocolVersion()
     {
-        return NativeMethods.TablePtr->hs_method_ab83fae1((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_ab83fae1((void*)__hosihikari_shim_handle);
     }
 
     public int getNumPlayers()
     {
-        return NativeMethods.TablePtr->hs_method_45897812((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_45897812((void*)__hosihikari_shim_handle);
     }
 
     public string getServerGuid()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_29ae1c45((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_29ae1c45((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setGameMode(int game_mode)
     {
-        NativeMethods.TablePtr->hs_method_c9b262c1((void*)_handle, game_mode);
+        NativeMethods.TablePtr->C0.hs_method_c9b262c1((void*)__hosihikari_shim_handle, game_mode);
     }
 
     public void setLevelName(string level_name)
@@ -195,23 +195,23 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(level_name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_6b596bb9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_6b596bb9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void setLocalPort(int port)
     {
-        NativeMethods.TablePtr->hs_method_e98c8586((void*)_handle, port);
+        NativeMethods.TablePtr->C0.hs_method_e98c8586((void*)__hosihikari_shim_handle, port);
     }
 
     public void setLocalPortV6(int port)
     {
-        NativeMethods.TablePtr->hs_method_419b1cf8((void*)_handle, port);
+        NativeMethods.TablePtr->C0.hs_method_419b1cf8((void*)__hosihikari_shim_handle, port);
     }
 
     public void setMaxPlayers(int max_players)
     {
-        NativeMethods.TablePtr->hs_method_6f01eb50((void*)_handle, max_players);
+        NativeMethods.TablePtr->C0.hs_method_6f01eb50((void*)__hosihikari_shim_handle, max_players);
     }
 
     public void setMinecraftVersionNetwork(string minecraft_version_network)
@@ -229,7 +229,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_34191d60((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_34191d60((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -248,13 +248,13 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(motd, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_5d1b4853((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_5d1b4853((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void setNumPlayers(int num_players)
     {
-        NativeMethods.TablePtr->hs_method_8b8714cc((void*)_handle, num_players);
+        NativeMethods.TablePtr->C0.hs_method_8b8714cc((void*)__hosihikari_shim_handle, num_players);
     }
 
     public void setServerGuid(string guid)
@@ -272,40 +272,40 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         global::System.Text.Encoding.UTF8.GetBytes(guid, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_b358f345((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_b358f345((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_ AsCancellable_endstone__ServerEvent_()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_((nint)NativeMethods.TablePtr->hs_cast_d76405a3((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_((nint)NativeMethods.TablePtr->C0.hs_cast_d76405a3((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_08eba17e((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_08eba17e((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_fd5a311d((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->C0.hs_cast_fd5a311d((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent AsServerEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->hs_cast_43d13f03((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->C0.hs_cast_43d13f03((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_14497b9a((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_14497b9a((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

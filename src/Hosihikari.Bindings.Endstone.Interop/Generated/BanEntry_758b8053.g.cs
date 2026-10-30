@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class BanEntry : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BanEntry(nint handle) : this(handle, true) { }
 
     internal BanEntry(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BanEntry Borrow(nint handle) => new BanEntry(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -42,43 +42,43 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->hs_get_25022bea();
+            var view = NativeMethods.TablePtr->C0.hs_get_25022bea();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public long getCreated()
     {
-        return NativeMethods.TablePtr->hs_method_ca474207((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_ca474207((void*)__hosihikari_shim_handle);
     }
 
     public long? getExpiration()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_9931b4a6((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_9931b4a6((void*)__hosihikari_shim_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (long?)null;
     }
 
     public string getReason()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c99f83bc((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c99f83bc((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getSource()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_10758bad((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_10758bad((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setCreated(long created)
     {
-        NativeMethods.TablePtr->hs_method_8bd4367b((void*)_handle, created);
+        NativeMethods.TablePtr->C0.hs_method_8bd4367b((void*)__hosihikari_shim_handle, created);
     }
 
     public void setExpiration(long? expiration)
     {
-        NativeMethods.TablePtr->hs_method_5570ad52((void*)_handle, expiration ?? default(long), expiration.HasValue);
+        NativeMethods.TablePtr->C0.hs_method_5570ad52((void*)__hosihikari_shim_handle, expiration ?? default(long), expiration.HasValue);
     }
 
     public void setReason(string reason)
@@ -96,7 +96,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_f4930bd7((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_f4930bd7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -115,20 +115,20 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(source, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_7f7278fb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_7f7278fb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_758b8053((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_758b8053((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

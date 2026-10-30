@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ThunderChangeEvent(nint handle) : this(handle, true) { }
 
     internal ThunderChangeEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ThunderChangeEvent Borrow(nint handle) => new ThunderChangeEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,19 +33,19 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5463cf9d();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5463cf9d();
     }
 
     public static ThunderChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Level level, bool to)
     {
-        var handle = NativeMethods.TablePtr->hs_create_e18f835a((void*)level.Handle, to);
+        var handle = NativeMethods.TablePtr->C0.hs_create_e18f835a((void*)level.Handle, to);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,46 +56,46 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_86f9ba6f((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_86f9ba6f((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toThunderState()
     {
-        return NativeMethods.TablePtr->hs_method_00fa4571((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_00fa4571((void*)__hosihikari_shim_handle) != 0;
     }
 
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_ AsCancellable_endstone__WeatherEvent_()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_((nint)NativeMethods.TablePtr->hs_cast_f5ab7016((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_((nint)NativeMethods.TablePtr->C0.hs_cast_f5ab7016((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_d7ca3658((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_d7ca3658((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_c2da2447((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->C0.hs_cast_c2da2447((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherEvent AsWeatherEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherEvent((nint)NativeMethods.TablePtr->hs_cast_d4705e26((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherEvent((nint)NativeMethods.TablePtr->C0.hs_cast_d4705e26((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_2ac6baed((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_2ac6baed((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

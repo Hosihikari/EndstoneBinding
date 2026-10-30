@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class PluginDisableEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PluginDisableEvent(nint handle) : this(handle, true) { }
 
     internal PluginDisableEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PluginDisableEvent Borrow(nint handle) => new PluginDisableEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,19 +33,19 @@ public sealed unsafe partial class PluginDisableEvent : global::System.IDisposab
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_b59aead7();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_b59aead7();
     }
 
     public static PluginDisableEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        var handle = NativeMethods.TablePtr->hs_create_70cfd6b4((void*)plugin.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_70cfd6b4((void*)plugin.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,35 +56,35 @@ public sealed unsafe partial class PluginDisableEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_c615ea0b((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_c615ea0b((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin getPlugin()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)NativeMethods.TablePtr->hs_method_9a56d0d6((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)NativeMethods.TablePtr->C0.hs_method_9a56d0d6((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_ca23c780((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_ca23c780((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent AsServerEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->hs_cast_b4447508((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->C0.hs_cast_b4447508((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_754b8d19((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_754b8d19((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

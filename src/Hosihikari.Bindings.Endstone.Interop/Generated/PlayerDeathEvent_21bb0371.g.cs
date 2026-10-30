@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerDeathEvent(nint handle) : this(handle, true) { }
 
     internal PlayerDeathEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerDeathEvent Borrow(nint handle) => new PlayerDeathEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,19 +33,19 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6c21fa68();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6c21fa68();
     }
 
     public static PlayerDeathEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.DamageSource damage_source, global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? death_message)
     {
-        var handle = NativeMethods.TablePtr->hs_create_ba4c0257((void*)player.Handle, (void*)damage_source.ReleaseHandle(), (void*)(death_message?.Handle ?? 0), death_message is not null);
+        var handle = NativeMethods.TablePtr->C0.hs_create_ba4c0257((void*)player.Handle, (void*)damage_source.ReleaseHandle(), (void*)(death_message?.Handle ?? 0), death_message is not null);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,51 +57,51 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getDeathMessage()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->hs_method_09a43d68((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_09a43d68((void*)__hosihikari_shim_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_a73c6a4f((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_a73c6a4f((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player getPlayer()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)NativeMethods.TablePtr->hs_method_0f3fb098((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)NativeMethods.TablePtr->C0.hs_method_0f3fb098((void*)__hosihikari_shim_handle), false);
     }
 
     public void setDeathMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? death_message)
     {
-        NativeMethods.TablePtr->hs_method_7b4a723d((void*)_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
+        NativeMethods.TablePtr->C0.hs_method_7b4a723d((void*)__hosihikari_shim_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent AsActorDeathEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent((nint)NativeMethods.TablePtr->hs_cast_0187d923((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent((nint)NativeMethods.TablePtr->C0.hs_cast_0187d923((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_ AsActorEvent_endstone__Mob_()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_((nint)NativeMethods.TablePtr->hs_cast_c6415699((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_((nint)NativeMethods.TablePtr->C0.hs_cast_c6415699((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_358bbcc3((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_358bbcc3((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_21bb0371((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_21bb0371((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

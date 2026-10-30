@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class PluginLoader
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PluginLoader(nint handle) : this(handle, true) { }
 
     internal PluginLoader(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PluginLoader Borrow(nint handle) => new PluginLoader(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class PluginLoader
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -44,17 +44,17 @@ public sealed unsafe partial class PluginLoader
 
     public void disablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->hs_method_3fabd36a((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->C0.hs_method_3fabd36a((void*)__hosihikari_shim_handle, (void*)plugin.Handle);
     }
 
     public void enablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->hs_method_0dec6e88((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->C0.hs_method_0dec6e88((void*)__hosihikari_shim_handle, (void*)plugin.Handle);
     }
 
     public string[] getPluginFileFilters()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_371cc56f((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_371cc56f((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -66,7 +66,7 @@ public sealed unsafe partial class PluginLoader
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Server getServer()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Server((nint)NativeMethods.TablePtr->hs_method_ba0f439a((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Server((nint)NativeMethods.TablePtr->C0.hs_method_ba0f439a((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? loadPlugin(string file)
@@ -84,7 +84,7 @@ public sealed unsafe partial class PluginLoader
         global::System.Text.Encoding.UTF8.GetBytes(file, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_41bf9b37((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C0.hs_method_41bf9b37((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)__hs_handle, false) : null;
         }
     }
@@ -104,7 +104,7 @@ public sealed unsafe partial class PluginLoader
         global::System.Text.Encoding.UTF8.GetBytes(directory, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_5f1e701c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_view = NativeMethods.TablePtr->C0.hs_method_5f1e701c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {

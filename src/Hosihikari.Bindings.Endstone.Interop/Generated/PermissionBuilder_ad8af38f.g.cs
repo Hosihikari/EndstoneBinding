@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.detail;
 
 public sealed unsafe partial class PermissionBuilder : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PermissionBuilder(nint handle) : this(handle, true) { }
 
     internal PermissionBuilder(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PermissionBuilder Borrow(nint handle) => new PermissionBuilder(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -53,7 +53,7 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b4ef4553(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var handle = NativeMethods.TablePtr->C0.hs_create_b4ef4553(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,7 +65,7 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission build()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission((nint)NativeMethods.TablePtr->hs_method_1197d8cc((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission((nint)NativeMethods.TablePtr->C0.hs_method_1197d8cc((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder children(string name, bool value)
@@ -83,13 +83,13 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_a61badb4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, value), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->C0.hs_method_a61badb4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, value), false);
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder default_(int default_value)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_b7b03a67((void*)_handle, default_value), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->C0.hs_method_b7b03a67((void*)__hosihikari_shim_handle, default_value), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder description(string description)
@@ -107,20 +107,20 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_f5492b69((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->C0.hs_method_f5492b69((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_ad8af38f((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_ad8af38f((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

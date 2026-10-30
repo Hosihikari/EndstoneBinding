@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class AttributeModifier : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AttributeModifier(nint handle) : this(handle, true) { }
 
     internal AttributeModifier(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AttributeModifier Borrow(nint handle) => new AttributeModifier(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -53,7 +53,7 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b7e7bc45(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)uuid.Handle, amount, operation);
+            var handle = NativeMethods.TablePtr->C0.hs_create_b7e7bc45(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)uuid.Handle, amount, operation);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -78,7 +78,7 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_4baec705(__hs_stringData0, (nuint)__hs_stringByteCount0, amount, operation);
+            var handle = NativeMethods.TablePtr->C0.hs_create_4baec705(__hs_stringData0, (nuint)__hs_stringByteCount0, amount, operation);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -90,35 +90,35 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
 
     public float getAmount()
     {
-        return NativeMethods.TablePtr->hs_method_7195aeb9((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_7195aeb9((void*)__hosihikari_shim_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_da791c2e((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_da791c2e((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getOperation()
     {
-        return NativeMethods.TablePtr->hs_method_7086e74a((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_7086e74a((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID getUniqueId()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->hs_method_8a078c40((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->C0.hs_method_8a078c40((void*)__hosihikari_shim_handle));
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_979fbed5((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_979fbed5((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

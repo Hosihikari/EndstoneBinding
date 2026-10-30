@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class PlayerBanList
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerBanList(nint handle) : this(handle, true) { }
 
     internal PlayerBanList(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerBanList Borrow(nint handle) => new PlayerBanList(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class PlayerBanList
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -92,7 +92,7 @@ public sealed unsafe partial class PlayerBanList
                 {
                     fixed (byte* __hs_stringData5 = __hs_stringBytes5)
                     {
-                        var __hs_shared = NativeMethods.TablePtr->hs_method_402af978((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, duration, __hs_stringData5, (nuint)__hs_stringByteCount5, uuid is not null, xuid is not null, reason is not null, source is not null);
+                        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_402af978((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, duration, __hs_stringData5, (nuint)__hs_stringByteCount5, uuid is not null, xuid is not null, reason is not null, source is not null);
                         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                     }
                 }
@@ -154,7 +154,7 @@ public sealed unsafe partial class PlayerBanList
                 {
                     fixed (byte* __hs_stringData5 = __hs_stringBytes5)
                     {
-                        var __hs_shared = NativeMethods.TablePtr->hs_method_f5a8bfc6((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, expires ?? default(long), __hs_stringData5, (nuint)__hs_stringByteCount5, uuid is not null, xuid is not null, reason is not null, expires.HasValue, source is not null);
+                        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_f5a8bfc6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, expires ?? default(long), __hs_stringData5, (nuint)__hs_stringByteCount5, uuid is not null, xuid is not null, reason is not null, expires.HasValue, source is not null);
                         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                     }
                 }
@@ -203,7 +203,7 @@ public sealed unsafe partial class PlayerBanList
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    var __hs_shared = NativeMethods.TablePtr->hs_method_d3942874((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, duration, __hs_stringData3, (nuint)__hs_stringByteCount3, reason is not null, source is not null);
+                    var __hs_shared = NativeMethods.TablePtr->C0.hs_method_d3942874((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, duration, __hs_stringData3, (nuint)__hs_stringByteCount3, reason is not null, source is not null);
                     return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                 }
             }
@@ -251,7 +251,7 @@ public sealed unsafe partial class PlayerBanList
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    var __hs_shared = NativeMethods.TablePtr->hs_method_4e3f6442((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, expires ?? default(long), __hs_stringData3, (nuint)__hs_stringByteCount3, reason is not null, expires.HasValue, source is not null);
+                    var __hs_shared = NativeMethods.TablePtr->C0.hs_method_4e3f6442((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, expires ?? default(long), __hs_stringData3, (nuint)__hs_stringByteCount3, reason is not null, expires.HasValue, source is not null);
                     return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                 }
             }
@@ -273,7 +273,7 @@ public sealed unsafe partial class PlayerBanList
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_e53ccf1d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C0.hs_method_e53ccf1d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
@@ -306,7 +306,7 @@ public sealed unsafe partial class PlayerBanList
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var __hs_shared = NativeMethods.TablePtr->hs_method_ac3c9805((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null);
+                var __hs_shared = NativeMethods.TablePtr->C0.hs_method_ac3c9805((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null);
                 return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
             }
         }
@@ -314,7 +314,7 @@ public sealed unsafe partial class PlayerBanList
 
     public global::Hosihikari.Bindings.Abi.SharedHandle[] getEntries()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_0e726e25((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_0e726e25((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.SharedHandleData*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Abi.SharedHandle>() : new global::Hosihikari.Bindings.Abi.SharedHandle[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -339,7 +339,7 @@ public sealed unsafe partial class PlayerBanList
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_d5b50c77((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C0.hs_method_d5b50c77((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -371,7 +371,7 @@ public sealed unsafe partial class PlayerBanList
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return NativeMethods.TablePtr->hs_method_b5bff8d5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null) != 0;
+                return NativeMethods.TablePtr->C0.hs_method_b5bff8d5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null) != 0;
             }
         }
     }
@@ -391,7 +391,7 @@ public sealed unsafe partial class PlayerBanList
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_97810986((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_97810986((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -423,13 +423,13 @@ public sealed unsafe partial class PlayerBanList
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->hs_method_1cd88237((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null);
+                NativeMethods.TablePtr->C0.hs_method_1cd88237((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null);
             }
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BanList_endstone__PlayerBanEntry_ AsBanList_endstone__PlayerBanEntry_()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BanList_endstone__PlayerBanEntry_((nint)NativeMethods.TablePtr->hs_cast_3f2bfc7e((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BanList_endstone__PlayerBanEntry_((nint)NativeMethods.TablePtr->C0.hs_cast_3f2bfc7e((void*)__hosihikari_shim_handle), false);
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Registry_endstone__ItemType_
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Registry_endstone__ItemType_(nint handle) : this(handle, true) { }
 
     internal Registry_endstone__ItemType_(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Registry_endstone__ItemType_ Borrow(nint handle) => new Registry_endstone__ItemType_(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,40 +33,40 @@ public sealed unsafe partial class Registry_endstone__ItemType_
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public void forEach(nint funcInvoke, nint funcUserData, nint funcRelease)
     {
-        NativeMethods.TablePtr->hs_method_f2521df4((void*)_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
+        NativeMethods.TablePtr->C0.hs_method_f2521df4((void*)__hosihikari_shim_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType? get_5781d235(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_5781d235((void*)_handle, (void*)id.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_5781d235((void*)__hosihikari_shim_handle, (void*)id.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType? get_011f7c17(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_011f7c17((void*)_handle, (void*)id.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_011f7c17((void*)__hosihikari_shim_handle, (void*)id.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType getOrThrow_04d90caa(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)NativeMethods.TablePtr->hs_method_04d90caa((void*)_handle, (void*)id.Handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)NativeMethods.TablePtr->C0.hs_method_04d90caa((void*)__hosihikari_shim_handle, (void*)id.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType getOrThrow_b144bf99(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)NativeMethods.TablePtr->hs_method_b144bf99((void*)_handle, (void*)id.Handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)NativeMethods.TablePtr->C0.hs_method_b144bf99((void*)__hosihikari_shim_handle, (void*)id.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry AsIRegistry()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry((nint)NativeMethods.TablePtr->hs_cast_b2d20ea1((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry((nint)NativeMethods.TablePtr->C0.hs_cast_b2d20ea1((void*)__hosihikari_shim_handle), false);
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Color : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Color(nint handle) : this(handle, true) { }
 
     internal Color(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Color Borrow(nint handle) => new Color(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class Color : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -42,7 +42,7 @@ public sealed unsafe partial class Color : global::System.IDisposable
 
     public static Color Create(byte red, byte green, byte blue, byte alpha)
     {
-        var handle = NativeMethods.TablePtr->hs_create_16a3a50e(red, green, blue, alpha);
+        var handle = NativeMethods.TablePtr->C0.hs_create_16a3a50e(red, green, blue, alpha);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,119 +55,119 @@ public sealed unsafe partial class Color : global::System.IDisposable
 
     public int asABGR()
     {
-        return NativeMethods.TablePtr->hs_method_c6e20247((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_c6e20247((void*)__hosihikari_shim_handle);
     }
 
     public int asBGR()
     {
-        return NativeMethods.TablePtr->hs_method_3a6d50d8((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_3a6d50d8((void*)__hosihikari_shim_handle);
     }
 
     public int asRGB()
     {
-        return NativeMethods.TablePtr->hs_method_fe1bd8a8((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_fe1bd8a8((void*)__hosihikari_shim_handle);
     }
 
     public int asRGBA()
     {
-        return NativeMethods.TablePtr->hs_method_5f9b09ba((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_5f9b09ba((void*)__hosihikari_shim_handle);
     }
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Color fromABGR(int abgr)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_520d5cb9(abgr));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_520d5cb9(abgr));
     }
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Color fromBGR(int bgr)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_a85ec1f7(bgr));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_a85ec1f7(bgr));
     }
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Color fromBGR(int blue, int green, int red)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_265097f4(blue, green, red));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_265097f4(blue, green, red));
     }
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Color fromRGB(int rgb)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_3a8c0087(rgb));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_3a8c0087(rgb));
     }
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Color fromRGB(int red, int green, int blue)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_81568786(red, green, blue));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_81568786(red, green, blue));
     }
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Color fromRGBA(int rgba)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_5a22fc30(rgba));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_5a22fc30(rgba));
     }
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Color fromRGBA(int red, int green, int blue, int alpha)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_ba318cdf(red, green, blue, alpha));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_ba318cdf(red, green, blue, alpha));
     }
 
     public int getAlpha()
     {
-        return NativeMethods.TablePtr->hs_method_ec53d5b8((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_ec53d5b8((void*)__hosihikari_shim_handle);
     }
 
     public int getBlue()
     {
-        return NativeMethods.TablePtr->hs_method_868e3c39((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_868e3c39((void*)__hosihikari_shim_handle);
     }
 
     public int getGreen()
     {
-        return NativeMethods.TablePtr->hs_method_42c0196e((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_42c0196e((void*)__hosihikari_shim_handle);
     }
 
     public int getRed()
     {
-        return NativeMethods.TablePtr->hs_method_1a1f9a7c((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_1a1f9a7c((void*)__hosihikari_shim_handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Color other)
     {
-        return NativeMethods.TablePtr->hs_method_88cb059a((void*)_handle, (void*)other.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_88cb059a((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Color other)
     {
-        return NativeMethods.TablePtr->hs_method_61844f16((void*)_handle, (void*)other.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_61844f16((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color setAlpha(int alpha)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_bc8aa569((void*)_handle, alpha));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_bc8aa569((void*)__hosihikari_shim_handle, alpha));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color setBlue(int blue)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_d6a9db7c((void*)_handle, blue));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_d6a9db7c((void*)__hosihikari_shim_handle, blue));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color setGreen(int green)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_02ff922e((void*)_handle, green));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_02ff922e((void*)__hosihikari_shim_handle, green));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color setRed(int red)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_b6ae91e5((void*)_handle, red));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->C0.hs_method_b6ae91e5((void*)__hosihikari_shim_handle, red));
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_5fd175cd((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_5fd175cd((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

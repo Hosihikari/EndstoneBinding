@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class MapCursor : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MapCursor(nint handle) : this(handle, true) { }
 
     internal MapCursor(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MapCursor Borrow(nint handle) => new MapCursor(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -53,7 +53,7 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(caption, __hs_stringBytes5);
         fixed (byte* __hs_stringData5 = __hs_stringBytes5)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b85a4cc2(x, y, direction, type, visible, __hs_stringData5, (nuint)__hs_stringByteCount5);
+            var handle = NativeMethods.TablePtr->C0.hs_create_b85a4cc2(x, y, direction, type, visible, __hs_stringData5, (nuint)__hs_stringByteCount5);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,33 +65,33 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
 
     public string getCaption()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_3e1bc8bb((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_3e1bc8bb((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public sbyte getDirection()
     {
-        return NativeMethods.TablePtr->hs_method_28d5480a((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_28d5480a((void*)__hosihikari_shim_handle);
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->hs_method_67d6c003((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_67d6c003((void*)__hosihikari_shim_handle);
     }
 
     public sbyte getX()
     {
-        return NativeMethods.TablePtr->hs_method_f9b6e643((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_f9b6e643((void*)__hosihikari_shim_handle);
     }
 
     public sbyte getY()
     {
-        return NativeMethods.TablePtr->hs_method_6c40daae((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_6c40daae((void*)__hosihikari_shim_handle);
     }
 
     public bool isVisible()
     {
-        return NativeMethods.TablePtr->hs_method_b8f3469f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_b8f3469f((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void setCaption(string caption)
@@ -109,45 +109,45 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(caption, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_9e4ac8e1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_9e4ac8e1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void setDirection(sbyte direction)
     {
-        NativeMethods.TablePtr->hs_method_458e560e((void*)_handle, direction);
+        NativeMethods.TablePtr->C0.hs_method_458e560e((void*)__hosihikari_shim_handle, direction);
     }
 
     public void setType(int type)
     {
-        NativeMethods.TablePtr->hs_method_7cff3c2e((void*)_handle, type);
+        NativeMethods.TablePtr->C0.hs_method_7cff3c2e((void*)__hosihikari_shim_handle, type);
     }
 
     public void setVisible(bool visible)
     {
-        NativeMethods.TablePtr->hs_method_43eea81d((void*)_handle, visible);
+        NativeMethods.TablePtr->C0.hs_method_43eea81d((void*)__hosihikari_shim_handle, visible);
     }
 
     public void setX(sbyte x)
     {
-        NativeMethods.TablePtr->hs_method_4837ef21((void*)_handle, x);
+        NativeMethods.TablePtr->C0.hs_method_4837ef21((void*)__hosihikari_shim_handle, x);
     }
 
     public void setY(sbyte y)
     {
-        NativeMethods.TablePtr->hs_method_db40d828((void*)_handle, y);
+        NativeMethods.TablePtr->C0.hs_method_db40d828((void*)__hosihikari_shim_handle, y);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_e9827695((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_e9827695((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

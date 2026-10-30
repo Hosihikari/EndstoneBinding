@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class AttributeInstance
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public AttributeInstance(nint handle) : this(handle, true) { }
 
     internal AttributeInstance(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static AttributeInstance Borrow(nint handle) => new AttributeInstance(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,24 +33,24 @@ public sealed unsafe partial class AttributeInstance
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public void addModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->hs_method_ddfdbac7((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->C0.hs_method_ddfdbac7((void*)__hosihikari_shim_handle, (void*)modifier.Handle);
     }
 
     public float getBaseValue()
     {
-        return NativeMethods.TablePtr->hs_method_cf3e205f((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_cf3e205f((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier[] getModifiers()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_71e01c4c((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_71e01c4c((void*)__hosihikari_shim_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier>() : new global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -62,22 +62,22 @@ public sealed unsafe partial class AttributeInstance
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_ getType()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->hs_method_755320b4((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->C0.hs_method_755320b4((void*)__hosihikari_shim_handle));
     }
 
     public float getValue()
     {
-        return NativeMethods.TablePtr->hs_method_8f965183((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_8f965183((void*)__hosihikari_shim_handle);
     }
 
     public void removeModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->hs_method_249dba4a((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->C0.hs_method_249dba4a((void*)__hosihikari_shim_handle, (void*)modifier.Handle);
     }
 
     public void setBaseValue(float value)
     {
-        NativeMethods.TablePtr->hs_method_b338dd40((void*)_handle, value);
+        NativeMethods.TablePtr->C0.hs_method_b338dd40((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

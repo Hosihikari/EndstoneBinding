@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class ItemFactory
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemFactory(nint handle) : this(handle, true) { }
 
     internal ItemFactory(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemFactory Borrow(nint handle) => new ItemFactory(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,31 @@ public sealed unsafe partial class ItemFactory
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? asMetaFor(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_d6415600((void*)_handle, (void*)(meta?.Handle ?? 0), (void*)type.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_d6415600((void*)__hosihikari_shim_handle, (void*)(meta?.Handle ?? 0), (void*)type.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle) : null;
     }
 
     public bool equals(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta1, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta2)
     {
-        return NativeMethods.TablePtr->hs_method_c6d96d56((void*)_handle, (void*)(meta1?.Handle ?? 0), (void*)(meta2?.Handle ?? 0)) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_c6d96d56((void*)__hosihikari_shim_handle, (void*)(meta1?.Handle ?? 0), (void*)(meta2?.Handle ?? 0)) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? getItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_c3966973((void*)_handle, (void*)type.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_c3966973((void*)__hosihikari_shim_handle, (void*)type.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle) : null;
     }
 
     public bool isApplicable(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        return NativeMethods.TablePtr->hs_method_7f7364e4((void*)_handle, (void*)(meta?.Handle ?? 0), (void*)type.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_7f7364e4((void*)__hosihikari_shim_handle, (void*)(meta?.Handle ?? 0), (void*)type.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

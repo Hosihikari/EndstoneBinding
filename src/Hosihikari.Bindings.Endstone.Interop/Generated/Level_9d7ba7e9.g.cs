@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Level
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Level(nint handle) : this(handle, true) { }
 
     internal Level(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Level Borrow(nint handle) => new Level(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class Level
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public nint[] getActors()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_270292cc((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_270292cc((void*)__hosihikari_shim_handle);
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -64,14 +64,14 @@ public sealed unsafe partial class Level
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_08076e18((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C0.hs_method_08076e18((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)__hs_handle, false) : null;
         }
     }
 
     public nint[] getDimensions()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_454cbadf((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_454cbadf((void*)__hosihikari_shim_handle);
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -82,23 +82,23 @@ public sealed unsafe partial class Level
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_3aa0a1c5((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_3aa0a1c5((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public long getSeed()
     {
-        return NativeMethods.TablePtr->hs_method_68956a20((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_68956a20((void*)__hosihikari_shim_handle);
     }
 
     public int getTime()
     {
-        return NativeMethods.TablePtr->hs_method_00cfe7f2((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_00cfe7f2((void*)__hosihikari_shim_handle);
     }
 
     public void setTime(int time)
     {
-        NativeMethods.TablePtr->hs_method_694008cf((void*)_handle, time);
+        NativeMethods.TablePtr->C0.hs_method_694008cf((void*)__hosihikari_shim_handle, time);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

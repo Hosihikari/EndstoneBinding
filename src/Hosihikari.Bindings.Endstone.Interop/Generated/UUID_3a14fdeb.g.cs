@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class UUID : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public UUID(nint handle) : this(handle, true) { }
 
     internal UUID(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static UUID Borrow(nint handle) => new UUID(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,72 +33,72 @@ public sealed unsafe partial class UUID : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public nint begin_aec4c3c3()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_aec4c3c3((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_aec4c3c3((void*)__hosihikari_shim_handle);
     }
 
     public nint begin_cfcdc770()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_cfcdc770((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_cfcdc770((void*)__hosihikari_shim_handle);
     }
 
     public nint data
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d70256cb((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d70256cb((void*)__hosihikari_shim_handle);
     }
 
     public nint end_358c4b97()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_358c4b97((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_358c4b97((void*)__hosihikari_shim_handle);
     }
 
     public nint end_bed6b0aa()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bed6b0aa((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_bed6b0aa((void*)__hosihikari_shim_handle);
     }
 
     public bool isNil()
     {
-        return NativeMethods.TablePtr->hs_method_06f303a1((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_06f303a1((void*)__hosihikari_shim_handle) != 0;
     }
 
     public static ulong size()
     {
-        return NativeMethods.TablePtr->hs_method_ef13b403();
+        return NativeMethods.TablePtr->C0.hs_method_ef13b403();
     }
 
     public string str()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_99e57321((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_99e57321((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void swap(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
     {
-        NativeMethods.TablePtr->hs_method_ea0e8712((void*)_handle, (void*)rhs.Handle);
+        NativeMethods.TablePtr->C0.hs_method_ea0e8712((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
     }
 
     public int version()
     {
-        return NativeMethods.TablePtr->hs_method_15358322((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_15358322((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_3a14fdeb((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_3a14fdeb((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

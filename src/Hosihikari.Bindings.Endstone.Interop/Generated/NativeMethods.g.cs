@@ -8,10 +8,8 @@ namespace Hosihikari.Bindings.Endstone.Interop;
 public static unsafe class NativeMethods
 {
     [global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Sequential)]
-    internal struct Table
+    internal struct TableChunk0
     {
-        public uint Version;
-        public uint Size;
         public delegate* unmanaged[Cdecl]<void*, void> hs_callable_7a4e965f_destroy;
         public delegate* unmanaged[Cdecl]<void*, void*, void> hs_callable_7a4e965f_invoke;
         public delegate* unmanaged[Cdecl]<void*, void> hs_callable_a442e6f7_destroy;
@@ -2432,6 +2430,14 @@ public static unsafe class NativeMethods
         public delegate* unmanaged[Cdecl]<void*, global::Hosihikari.Bindings.Abi.StringView> hs_variant_228e24a8_get_0;
         public delegate* unmanaged[Cdecl]<void*, void*> hs_variant_228e24a8_get_1;
         public delegate* unmanaged[Cdecl]<void*, int> hs_variant_228e24a8_index;
+    }
+
+    [global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Sequential)]
+    internal struct Table
+    {
+        public uint Version;
+        public uint Size;
+        public TableChunk0 C0;
     }
 
     private static global::Hosihikari.Bindings.Abi.ShimLibrary? s_library;

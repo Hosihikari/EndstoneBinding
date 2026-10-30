@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class MapMeta
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MapMeta(nint handle) : this(handle, true) { }
 
     internal MapMeta(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MapMeta Borrow(nint handle) => new MapMeta(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,49 +33,49 @@ public sealed unsafe partial class MapMeta
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->hs_get_2da2fd06();
+        get => NativeMethods.TablePtr->C0.hs_get_2da2fd06();
     }
 
     public long getMapId()
     {
-        return NativeMethods.TablePtr->hs_method_ef46ef88((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_ef46ef88((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView? getMapView()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_53bc778b((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_53bc778b((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView((nint)__hs_handle, false) : null;
     }
 
     public bool hasMapId()
     {
-        return NativeMethods.TablePtr->hs_method_06b88344((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_06b88344((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool hasMapView()
     {
-        return NativeMethods.TablePtr->hs_method_a04ea49e((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_a04ea49e((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void setMapId(long id)
     {
-        NativeMethods.TablePtr->hs_method_9ee58155((void*)_handle, id);
+        NativeMethods.TablePtr->C0.hs_method_9ee58155((void*)__hosihikari_shim_handle, id);
     }
 
     public void setMapView(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView? map)
     {
-        NativeMethods.TablePtr->hs_method_1052b284((void*)_handle, (void*)(map?.Handle ?? 0));
+        NativeMethods.TablePtr->C0.hs_method_1052b284((void*)__hosihikari_shim_handle, (void*)(map?.Handle ?? 0));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_6d8c28a6((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->C0.hs_cast_6d8c28a6((void*)__hosihikari_shim_handle), false);
     }
 }

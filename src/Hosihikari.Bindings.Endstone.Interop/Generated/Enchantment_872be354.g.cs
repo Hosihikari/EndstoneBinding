@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Enchantment
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Enchantment(nint handle) : this(handle, true) { }
 
     internal Enchantment(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Enchantment Borrow(nint handle) => new Enchantment(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,248 +33,248 @@ public sealed unsafe partial class Enchantment
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint AquaAffinity
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_cb19badc();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_cb19badc();
     }
 
     public static nint BaneOfArthropods
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_52397ef4();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_52397ef4();
     }
 
     public static nint BlastProtection
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4055435f();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4055435f();
     }
 
     public static nint Breach
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_29c2284e();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_29c2284e();
     }
 
     public static nint Channeling
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c2fc4f58();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c2fc4f58();
     }
 
     public static nint CurseOfBinding
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4a15a899();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4a15a899();
     }
 
     public static nint CurseOfVanishing
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_e45abced();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_e45abced();
     }
 
     public static nint Density
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_391a4e72();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_391a4e72();
     }
 
     public static nint DepthStrider
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1468f05d();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1468f05d();
     }
 
     public static nint Efficiency
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_19cb8272();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_19cb8272();
     }
 
     public static nint FeatherFalling
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ad95fd46();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ad95fd46();
     }
 
     public static nint FireAspect
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_c2daaa4d();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_c2daaa4d();
     }
 
     public static nint FireProtection
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_00a64c9c();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_00a64c9c();
     }
 
     public static nint Flame
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1d0e51c3();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1d0e51c3();
     }
 
     public static nint Fortune
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_15ec6b69();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_15ec6b69();
     }
 
     public static nint FrostWalker
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0e829759();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0e829759();
     }
 
     public static nint Impaling
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_325b9913();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_325b9913();
     }
 
     public static nint Infinity
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_a89ec1c9();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_a89ec1c9();
     }
 
     public static nint Knockback
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_0e4898e6();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0e4898e6();
     }
 
     public static nint Looting
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_586511ee();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_586511ee();
     }
 
     public static nint Loyalty
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_ea32e7e9();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_ea32e7e9();
     }
 
     public static nint LuckOfTheSea
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_adb448a6();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_adb448a6();
     }
 
     public static nint Lunge
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4db1bcb7();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_4db1bcb7();
     }
 
     public static nint Lure
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3f603056();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3f603056();
     }
 
     public static nint Mending
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1754856b();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1754856b();
     }
 
     public static nint Multishot
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_afdfb1e7();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_afdfb1e7();
     }
 
     public static nint Piercing
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_684403e6();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_684403e6();
     }
 
     public static nint Power
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_7e31743d();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7e31743d();
     }
 
     public static nint ProjectileProtection
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_3bdd60c3();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_3bdd60c3();
     }
 
     public static nint Protection
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_92f0cf42();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_92f0cf42();
     }
 
     public static nint Punch
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8a287471();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8a287471();
     }
 
     public static nint QuickCharge
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_dcbab3c3();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_dcbab3c3();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_1033e670();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_1033e670();
     }
 
     public static nint Respiration
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_9b25f965();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_9b25f965();
     }
 
     public static nint Riptide
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_d854aa52();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_d854aa52();
     }
 
     public static nint Sharpness
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_566b32e8();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_566b32e8();
     }
 
     public static nint SilkTouch
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_564c5cbf();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_564c5cbf();
     }
 
     public static nint Smite
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8fcf8a73();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8fcf8a73();
     }
 
     public static nint SoulSpeed
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_67671d69();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_67671d69();
     }
 
     public static nint SwiftSneak
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_5fda73bb();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_5fda73bb();
     }
 
     public static nint Thorns
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_2d4842ba();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_2d4842ba();
     }
 
     public static nint Unbreaking
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_84a62466();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_84a62466();
     }
 
     public static nint WindBurst
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_7e61d5a3();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_7e61d5a3();
     }
 
     public bool canEnchantItem(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_e509f229((void*)_handle, (void*)item.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_e509f229((void*)__hosihikari_shim_handle, (void*)item.Handle) != 0;
     }
 
     public bool conflictsWith(global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment other)
     {
-        return NativeMethods.TablePtr->hs_method_b77af417((void*)_handle, (void*)other.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_b77af417((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->hs_method_f4b98c86((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_f4b98c86((void*)__hosihikari_shim_handle);
     }
 
     public int getStartLevel()
     {
-        return NativeMethods.TablePtr->hs_method_51220b54((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_51220b54((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Enchantment__Nested.Type AsType()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Enchantment__Nested.Type((nint)NativeMethods.TablePtr->hs_cast_f921ca39((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Enchantment__Nested.Type((nint)NativeMethods.TablePtr->C0.hs_cast_f921ca39((void*)__hosihikari_shim_handle), false);
     }
 }

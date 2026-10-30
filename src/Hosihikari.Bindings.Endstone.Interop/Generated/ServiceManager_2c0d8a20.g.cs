@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class ServiceManager
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ServiceManager(nint handle) : this(handle, true) { }
 
     internal ServiceManager(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ServiceManager Borrow(nint handle) => new ServiceManager(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class ServiceManager
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -53,7 +53,7 @@ public sealed unsafe partial class ServiceManager
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_5a82ad36((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C0.hs_method_5a82ad36((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
@@ -73,13 +73,13 @@ public sealed unsafe partial class ServiceManager
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_5e0e663b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, provider?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)plugin.Handle, priority);
+            NativeMethods.TablePtr->C0.hs_method_5e0e663b((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, provider?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)plugin.Handle, priority);
         }
     }
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
     {
-        NativeMethods.TablePtr->hs_method_17d8d0e8((void*)_handle, (void*)provider.Handle);
+        NativeMethods.TablePtr->C0.hs_method_17d8d0e8((void*)__hosihikari_shim_handle, (void*)provider.Handle);
     }
 
     public void unregister(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
@@ -97,13 +97,13 @@ public sealed unsafe partial class ServiceManager
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_d8e7f62a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)provider.Handle);
+            NativeMethods.TablePtr->C0.hs_method_d8e7f62a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)provider.Handle);
         }
     }
 
     public void unregisterAll(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->hs_method_700a22f6((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->C0.hs_method_700a22f6((void*)__hosihikari_shim_handle, (void*)plugin.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.nbt;
 
 public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ValueTag_std__basic_string_char__(nint handle) : this(handle, true) { }
 
     internal ValueTag_std__basic_string_char__(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ValueTag_std__basic_string_char__ Borrow(nint handle) => new ValueTag_std__basic_string_char__(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static ValueTag_std__basic_string_char__ Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_c7f15440();
+        var handle = NativeMethods.TablePtr->C0.hs_create_c7f15440();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,7 +64,7 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
         global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_9148a4df(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var handle = NativeMethods.TablePtr->C0.hs_create_9148a4df(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -89,7 +89,7 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
         global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_041ea18a(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var handle = NativeMethods.TablePtr->C0.hs_create_041ea18a(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -101,31 +101,31 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
 
     public string operator_const_std__basic_string_char___()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_087d950e((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_087d950e((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string value()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_5bc99605((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_5bc99605((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase AsTagBase()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase((nint)NativeMethods.TablePtr->hs_cast_000601bd((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase((nint)NativeMethods.TablePtr->C0.hs_cast_000601bd((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_dcd76654((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_dcd76654((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

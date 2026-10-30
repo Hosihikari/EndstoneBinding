@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PacketSendEvent(nint handle) : this(handle, true) { }
 
     internal PacketSendEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PacketSendEvent Borrow(nint handle) => new PacketSendEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_8a66849e();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_8a66849e();
     }
 
     public static PacketSendEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? player, int packet_id, string payload, global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, int sub_client_id)
@@ -58,7 +58,7 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(payload, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            var handle = NativeMethods.TablePtr->hs_create_8d8f9b72((void*)(player?.Handle ?? 0), packet_id, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)address.Handle, sub_client_id);
+            var handle = NativeMethods.TablePtr->C0.hs_create_8d8f9b72((void*)(player?.Handle ?? 0), packet_id, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)address.Handle, sub_client_id);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -70,35 +70,35 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress getAddress()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->hs_method_53132e9f((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->C0.hs_method_53132e9f((void*)__hosihikari_shim_handle));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_e4c67418((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_e4c67418((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPacketId()
     {
-        return NativeMethods.TablePtr->hs_method_20d62971((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_20d62971((void*)__hosihikari_shim_handle);
     }
 
     public string getPayload()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_7e4406c6((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_7e4406c6((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? getPlayer()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_19c260f4((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_19c260f4((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
     }
 
     public int getSubClientId()
     {
-        return NativeMethods.TablePtr->hs_method_419bf171((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_419bf171((void*)__hosihikari_shim_handle);
     }
 
     public void setPayload(string payload)
@@ -116,40 +116,40 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(payload, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_950a5c86((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C0.hs_method_950a5c86((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_ AsCancellable_endstone__ServerEvent_()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_((nint)NativeMethods.TablePtr->hs_cast_619c23df((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_((nint)NativeMethods.TablePtr->C0.hs_cast_619c23df((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_b5062b29((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_b5062b29((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_5ba74fe5((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->C0.hs_cast_5ba74fe5((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent AsServerEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->hs_cast_822a9fd7((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->C0.hs_cast_822a9fd7((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_578b0b0b((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_578b0b0b((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

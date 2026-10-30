@@ -6,11 +6,11 @@ namespace Hosihikari.Bindings.Endstone.Interop;
 
 public sealed unsafe class Function_08258ebd : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
 
-    public Function_08258ebd(nint handle) => _handle = handle;
+    public Function_08258ebd(nint handle) => __hosihikari_shim_handle = handle;
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     public void Invoke(nint arg0, string arg1)
     {
@@ -27,16 +27,16 @@ public sealed unsafe class Function_08258ebd : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg1, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_callable_08258ebd_invoke((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C0.hs_callable_08258ebd_invoke((void*)__hosihikari_shim_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
-            NativeMethods.TablePtr->hs_callable_08258ebd_destroy((void*)_handle);
-            _handle = 0;
+            NativeMethods.TablePtr->C0.hs_callable_08258ebd_destroy((void*)__hosihikari_shim_handle);
+            __hosihikari_shim_handle = 0;
         }
     }
 }

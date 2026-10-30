@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Skin : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Skin(nint handle) : this(handle, true) { }
 
     internal Skin(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Skin Borrow(nint handle) => new Skin(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class Skin : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -66,7 +66,7 @@ public sealed unsafe partial class Skin : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->hs_create_f80c3f5d(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
+                var handle = NativeMethods.TablePtr->C0.hs_create_f80c3f5d(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,36 +79,36 @@ public sealed unsafe partial class Skin : global::System.IDisposable
 
     public nint getCapeId()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b76a1d2a((void*)_handle);
+        return (nint)NativeMethods.TablePtr->C0.hs_method_b76a1d2a((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Image? getCapeImage()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_e317c5af((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_e317c5af((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)__hs_handle, false) : null;
     }
 
     public string getId()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_268c7ed5((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_268c7ed5((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Image getImage()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)NativeMethods.TablePtr->hs_method_adc734db((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)NativeMethods.TablePtr->C0.hs_method_adc734db((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_477bc033((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_477bc033((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

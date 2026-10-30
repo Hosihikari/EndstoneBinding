@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Colors : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Colors(nint handle) : this(handle, true) { }
 
     internal Colors(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Colors Borrow(nint handle) => new Colors(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,31 +33,31 @@ public sealed unsafe partial class Colors : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint BLACK
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_67ca1265();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_67ca1265();
     }
 
     public static nint WHITE
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_25b875e3();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_25b875e3();
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_8bec19e3((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_8bec19e3((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

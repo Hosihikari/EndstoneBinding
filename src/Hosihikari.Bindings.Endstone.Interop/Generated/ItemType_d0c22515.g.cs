@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class ItemType
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public ItemType(nint handle) : this(handle, true) { }
 
     internal ItemType(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static ItemType Borrow(nint handle) => new ItemType(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,55 +33,55 @@ public sealed unsafe partial class ItemType
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint Air
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_6aad1cda();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_6aad1cda();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_83ae15ec();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_83ae15ec();
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_efd88a4c((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->C0.hs_method_efd88a4c((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack(int amount)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_64d1e9b9((void*)_handle, amount));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->C0.hs_method_64d1e9b9((void*)__hosihikari_shim_handle, amount));
     }
 
     public int getMaxDurability()
     {
-        return NativeMethods.TablePtr->hs_method_99c63aca((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_99c63aca((void*)__hosihikari_shim_handle);
     }
 
     public int getMaxStackSize()
     {
-        return NativeMethods.TablePtr->hs_method_8541145d((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_8541145d((void*)__hosihikari_shim_handle);
     }
 
     public string getTranslationKey()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_04596f49((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_04596f49((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getTranslationKey(int data)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_d6685e73((void*)_handle, data);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_d6685e73((void*)__hosihikari_shim_handle, data);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__ItemType__Nested.Type AsType()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__ItemType__Nested.Type((nint)NativeMethods.TablePtr->hs_cast_57463d0b((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__ItemType__Nested.Type((nint)NativeMethods.TablePtr->C0.hs_cast_57463d0b((void*)__hosihikari_shim_handle), false);
     }
 }

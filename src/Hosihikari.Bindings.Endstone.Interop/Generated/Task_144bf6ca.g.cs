@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Task
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Task(nint handle) : this(handle, true) { }
 
     internal Task(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Task Borrow(nint handle) => new Task(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,35 +33,35 @@ public sealed unsafe partial class Task
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public void cancel()
     {
-        NativeMethods.TablePtr->hs_method_34195476((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_34195476((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? getOwner()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_method_53f1a0f6((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_53f1a0f6((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)__hs_handle, false) : null;
     }
 
     public uint getTaskId()
     {
-        return NativeMethods.TablePtr->hs_method_cd52150c((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_cd52150c((void*)__hosihikari_shim_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->hs_method_1b04d263((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_1b04d263((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isSync()
     {
-        return NativeMethods.TablePtr->hs_method_3838f72f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_3838f72f((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Dropdown : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Dropdown(nint handle) : this(handle, true) { }
 
     internal Dropdown(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Dropdown Borrow(nint handle) => new Dropdown(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static Dropdown Create()
     {
-        var handle = NativeMethods.TablePtr->hs_create_6935619b();
+        var handle = NativeMethods.TablePtr->C0.hs_create_6935619b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,7 +71,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
                 __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
                 __hs_vectorOffset1 += __hs_length1;
             }
-            var handle = NativeMethods.TablePtr->hs_create_6d3c42f7((void*)label.Handle, default_index ?? default(int), __hs_vectorData1, (nuint)(options?.Length ?? 0), default_index.HasValue);
+            var handle = NativeMethods.TablePtr->C0.hs_create_6d3c42f7((void*)label.Handle, default_index ?? default(int), __hs_vectorData1, (nuint)(options?.Length ?? 0), default_index.HasValue);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -96,25 +96,25 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(option, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_ef8d8378((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->C0.hs_method_ef8d8378((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
     public int? getDefaultIndex()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_06d835d9((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_06d835d9((void*)__hosihikari_shim_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_adf3c2be((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->C0.hs_method_adf3c2be((void*)__hosihikari_shim_handle));
     }
 
     public string[] getOptions()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_6c265d10((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_6c265d10((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -126,12 +126,12 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown setDefaultIndex(int? default_index)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_34be09a0((void*)_handle, default_index ?? default(int), default_index.HasValue), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->C0.hs_method_34be09a0((void*)__hosihikari_shim_handle, default_index ?? default(int), default_index.HasValue), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_dd40b665((void*)_handle, (void*)label.Handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->C0.hs_method_dd40b665((void*)__hosihikari_shim_handle, (void*)label.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown setOptions(string[] options)
@@ -156,20 +156,20 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_e876541b((void*)_handle, __hs_vectorData0, (nuint)(options?.Length ?? 0)), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->C0.hs_method_e876541b((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(options?.Length ?? 0)), false);
         }
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_9c3982da((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_9c3982da((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

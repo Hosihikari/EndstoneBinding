@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public PlayerDimensionChangeEvent(nint handle) : this(handle, true) { }
 
     internal PlayerDimensionChangeEvent(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static PlayerDimensionChangeEvent Borrow(nint handle) => new PlayerDimensionChangeEvent(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,19 +33,19 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_da0bdd12();
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_da0bdd12();
     }
 
     public static PlayerDimensionChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension from, global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension to)
     {
-        var handle = NativeMethods.TablePtr->hs_create_eb5beb30((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
+        var handle = NativeMethods.TablePtr->C0.hs_create_eb5beb30((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,40 +56,40 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_662d6064((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_662d6064((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getFrom()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_41d9abc5((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->C0.hs_method_41d9abc5((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getTo()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_1c7ecf07((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->C0.hs_method_1c7ecf07((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_bcb09735((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->C0.hs_cast_bcb09735((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent AsPlayerEvent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent((nint)NativeMethods.TablePtr->hs_cast_9793c9e1((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent((nint)NativeMethods.TablePtr->C0.hs_cast_9793c9e1((void*)__hosihikari_shim_handle), false);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->hs_destroy_bea4b70e((void*)_handle);
+                NativeMethods.TablePtr->C0.hs_destroy_bea4b70e((void*)__hosihikari_shim_handle);
             }
 
-            _handle = 0;
+            __hosihikari_shim_handle = 0;
         }
     }
 }

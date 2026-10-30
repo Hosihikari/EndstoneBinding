@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class CrossbowMeta
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CrossbowMeta(nint handle) : this(handle, true) { }
 
     internal CrossbowMeta(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CrossbowMeta Borrow(nint handle) => new CrossbowMeta(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,24 +33,24 @@ public sealed unsafe partial class CrossbowMeta
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->hs_get_ac57d345();
+        get => NativeMethods.TablePtr->C0.hs_get_ac57d345();
     }
 
     public void addChargedProjectile(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->hs_method_6b7cb64c((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->C0.hs_method_6b7cb64c((void*)__hosihikari_shim_handle, (void*)item.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] getChargedProjectiles()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_1b51daa8((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_1b51daa8((void*)__hosihikari_shim_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack>() : new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -62,7 +62,7 @@ public sealed unsafe partial class CrossbowMeta
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->hs_method_abce5a3b((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_abce5a3b((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void setChargedProjectiles(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] projectiles)
@@ -76,12 +76,12 @@ public sealed unsafe partial class CrossbowMeta
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->hs_method_dc173cf9((void*)_handle, __hs_vectorData0, (nuint)(projectiles?.Length ?? 0));
+            NativeMethods.TablePtr->C0.hs_method_dc173cf9((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(projectiles?.Length ?? 0));
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_8fff943c((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->C0.hs_cast_8fff943c((void*)__hosihikari_shim_handle), false);
     }
 }

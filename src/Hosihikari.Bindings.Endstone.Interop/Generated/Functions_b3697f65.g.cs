@@ -8,12 +8,12 @@ public static unsafe partial class Functions
 {
     public static bool operator_equal_0b5b5495(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag b)
     {
-        return NativeMethods.TablePtr->hs_function_0b5b5495((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_0b5b5495((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_0cf24c37(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ b)
     {
-        return NativeMethods.TablePtr->hs_function_0cf24c37((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_0cf24c37((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_0e0fd0a7(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ a, string b)
@@ -31,28 +31,28 @@ public static unsafe partial class Functions
         global::System.Text.Encoding.UTF8.GetBytes(b, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_function_0e0fd0a7((void*)a.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_0e0fd0a7((void*)a.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
     public static bool operator_equal_1180a433(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ b)
     {
-        return NativeMethods.TablePtr->hs_function_1180a433((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_1180a433((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_11a6b0fe(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_unsigned_char_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_unsigned_char_ b)
     {
-        return NativeMethods.TablePtr->hs_function_11a6b0fe((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_11a6b0fe((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_22a3a272(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_22a3a272((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_22a3a272((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_equal_342074c1(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ b)
     {
-        return NativeMethods.TablePtr->hs_function_342074c1((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_342074c1((void*)a, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_45dbbae5(string a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ b)
@@ -70,168 +70,168 @@ public static unsafe partial class Functions
         global::System.Text.Encoding.UTF8.GetBytes(a, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_function_45dbbae5(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)b.Handle) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_45dbbae5(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)b.Handle) != 0;
         }
     }
 
     public static bool operator_equal_4848542f(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ b)
     {
-        return NativeMethods.TablePtr->hs_function_4848542f((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_4848542f((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_4beedfb1(byte[] a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ b)
     {
         fixed (byte* __hs_vectorData0 = a)
         {
-            return NativeMethods.TablePtr->hs_function_4beedfb1((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_4beedfb1((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_equal_6608bf55(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ b)
     {
-        return NativeMethods.TablePtr->hs_function_6608bf55((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_6608bf55((void*)a, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_6c697d92(int[] a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ b)
     {
         fixed (int* __hs_vectorData0 = a)
         {
-            return NativeMethods.TablePtr->hs_function_6c697d92((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_6c697d92((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_equal_7f1905f1(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_7f1905f1((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_7f1905f1((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_equal_836b248e(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_836b248e((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_836b248e((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_equal_85a4ea42(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ b)
     {
-        return NativeMethods.TablePtr->hs_function_85a4ea42((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_85a4ea42((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_a4742673(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ b)
     {
-        return NativeMethods.TablePtr->hs_function_a4742673((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_a4742673((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_ab76be15(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ b)
     {
-        return NativeMethods.TablePtr->hs_function_ab76be15((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_ab76be15((void*)a, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_c9e15203(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ a, int[] b)
     {
         fixed (int* __hs_vectorData1 = b)
         {
-            return NativeMethods.TablePtr->hs_function_c9e15203((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_c9e15203((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_equal_d461a940(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ b)
     {
-        return NativeMethods.TablePtr->hs_function_d461a940((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_d461a940((void*)a, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_d4dd8e66(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ b)
     {
-        return NativeMethods.TablePtr->hs_function_d4dd8e66((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_d4dd8e66((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_ddaaaa56(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_long_long_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_long_long_ b)
     {
-        return NativeMethods.TablePtr->hs_function_ddaaaa56((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_ddaaaa56((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_e52df3e6(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_e52df3e6((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_e52df3e6((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_equal_e796738c(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ b)
     {
-        return NativeMethods.TablePtr->hs_function_e796738c((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_e796738c((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_equal_fd51a39a(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ a, byte[] b)
     {
         fixed (byte* __hs_vectorData1 = b)
         {
-            return NativeMethods.TablePtr->hs_function_fd51a39a((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_fd51a39a((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_not_equal_0c64b98d(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ b)
     {
-        return NativeMethods.TablePtr->hs_function_0c64b98d((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_0c64b98d((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_0cee10d2(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_0cee10d2((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_0cee10d2((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_not_equal_12a24360(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag b)
     {
-        return NativeMethods.TablePtr->hs_function_12a24360((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_12a24360((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_19ca1616(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_19ca1616((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_19ca1616((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_not_equal_2174baba(int[] a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ b)
     {
         fixed (int* __hs_vectorData0 = a)
         {
-            return NativeMethods.TablePtr->hs_function_2174baba((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_2174baba((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_not_equal_2a1c955f(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_2a1c955f((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_2a1c955f((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_not_equal_2d8e5bf5(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ b)
     {
-        return NativeMethods.TablePtr->hs_function_2d8e5bf5((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_2d8e5bf5((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_2dea6385(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ b)
     {
-        return NativeMethods.TablePtr->hs_function_2dea6385((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_2dea6385((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_301a87d3(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ b)
     {
-        return NativeMethods.TablePtr->hs_function_301a87d3((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_301a87d3((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_39e06c57(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ b)
     {
-        return NativeMethods.TablePtr->hs_function_39e06c57((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_39e06c57((void*)a, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_50ef22a6(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_unsigned_char_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_unsigned_char_ b)
     {
-        return NativeMethods.TablePtr->hs_function_50ef22a6((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_50ef22a6((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_5696c3f8(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ b)
     {
-        return NativeMethods.TablePtr->hs_function_5696c3f8((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_5696c3f8((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_5ad85de4(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ b)
     {
-        return NativeMethods.TablePtr->hs_function_5ad85de4((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_5ad85de4((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_5fc08365(string a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ b)
@@ -249,7 +249,7 @@ public static unsafe partial class Functions
         global::System.Text.Encoding.UTF8.GetBytes(a, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_function_5fc08365(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)b.Handle) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_5fc08365(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)b.Handle) != 0;
         }
     }
 
@@ -257,13 +257,13 @@ public static unsafe partial class Functions
     {
         fixed (byte* __hs_vectorData1 = b)
         {
-            return NativeMethods.TablePtr->hs_function_6a2dbd23((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_6a2dbd23((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_not_equal_6cb1c385(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_long_long_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_long_long_ b)
     {
-        return NativeMethods.TablePtr->hs_function_6cb1c385((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_6cb1c385((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_86f3fa2e(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ a, string b)
@@ -281,48 +281,48 @@ public static unsafe partial class Functions
         global::System.Text.Encoding.UTF8.GetBytes(b, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_function_86f3fa2e((void*)a.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_86f3fa2e((void*)a.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
     public static bool operator_not_equal_a8dc47a2(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ b)
     {
-        return NativeMethods.TablePtr->hs_function_a8dc47a2((void*)a.Handle, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_a8dc47a2((void*)a.Handle, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_c36074e6(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ b)
     {
-        return NativeMethods.TablePtr->hs_function_c36074e6((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_c36074e6((void*)a, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_d0459049(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ a, int[] b)
     {
         fixed (int* __hs_vectorData1 = b)
         {
-            return NativeMethods.TablePtr->hs_function_d0459049((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_d0459049((void*)a.Handle, __hs_vectorData1, (nuint)(b?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_not_equal_e5cd320f(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ b)
     {
-        return NativeMethods.TablePtr->hs_function_e5cd320f((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_e5cd320f((void*)a, (void*)b.Handle) != 0;
     }
 
     public static bool operator_not_equal_ee09e6be(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ a, nint b)
     {
-        return NativeMethods.TablePtr->hs_function_ee09e6be((void*)a.Handle, (void*)b) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_ee09e6be((void*)a.Handle, (void*)b) != 0;
     }
 
     public static bool operator_not_equal_ee99bc6d(byte[] a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ b)
     {
         fixed (byte* __hs_vectorData0 = a)
         {
-            return NativeMethods.TablePtr->hs_function_ee99bc6d((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C0.hs_function_ee99bc6d((void*)b.Handle, __hs_vectorData0, (nuint)(a?.Length ?? 0)) != 0;
         }
     }
 
     public static bool operator_not_equal_f4ec86ec(nint a, global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ b)
     {
-        return NativeMethods.TablePtr->hs_function_f4ec86ec((void*)a, (void*)b.Handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_function_f4ec86ec((void*)a, (void*)b.Handle) != 0;
     }
 }

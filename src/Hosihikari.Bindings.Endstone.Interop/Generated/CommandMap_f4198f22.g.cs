@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class CommandMap
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public CommandMap(nint handle) : this(handle, true) { }
 
     internal CommandMap(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static CommandMap Borrow(nint handle) => new CommandMap(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class CommandMap
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -48,7 +48,7 @@ public sealed unsafe partial class CommandMap
 
     public void clearCommands()
     {
-        NativeMethods.TablePtr->hs_method_9377e1af((void*)_handle);
+        NativeMethods.TablePtr->C0.hs_method_9377e1af((void*)__hosihikari_shim_handle);
     }
 
     public bool dispatch(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string command_line)
@@ -66,7 +66,7 @@ public sealed unsafe partial class CommandMap
         global::System.Text.Encoding.UTF8.GetBytes(command_line, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_40f031d6((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+            return NativeMethods.TablePtr->C0.hs_method_40f031d6((void*)__hosihikari_shim_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
@@ -85,19 +85,19 @@ public sealed unsafe partial class CommandMap
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_f9a885bb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C0.hs_method_f9a885bb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap operator_assign(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap arg0)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap((nint)NativeMethods.TablePtr->hs_method_d998e156((void*)_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap((nint)NativeMethods.TablePtr->C0.hs_method_d998e156((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public bool registerCommand(global::Hosihikari.Bindings.Abi.SharedHandle? command)
     {
-        return NativeMethods.TablePtr->hs_method_05b1c177((void*)_handle, command?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_05b1c177((void*)__hosihikari_shim_handle, command?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

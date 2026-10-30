@@ -6,23 +6,23 @@ namespace Hosihikari.Bindings.Endstone.Interop;
 
 public sealed unsafe class Function_7a4e965f : global::System.IDisposable
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
 
-    public Function_7a4e965f(nint handle) => _handle = handle;
+    public Function_7a4e965f(nint handle) => __hosihikari_shim_handle = handle;
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     public void Invoke(nint arg0)
     {
-        NativeMethods.TablePtr->hs_callable_7a4e965f_invoke((void*)_handle, (void*)arg0);
+        NativeMethods.TablePtr->C0.hs_callable_7a4e965f_invoke((void*)__hosihikari_shim_handle, (void*)arg0);
     }
 
     public void Dispose()
     {
-        if (_handle != 0)
+        if (__hosihikari_shim_handle != 0)
         {
-            NativeMethods.TablePtr->hs_callable_7a4e965f_destroy((void*)_handle);
-            _handle = 0;
+            NativeMethods.TablePtr->C0.hs_callable_7a4e965f_destroy((void*)__hosihikari_shim_handle);
+            __hosihikari_shim_handle = 0;
         }
     }
 }

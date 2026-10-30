@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class MapRenderer
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public MapRenderer(nint handle) : this(handle, true) { }
 
     internal MapRenderer(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static MapRenderer Borrow(nint handle) => new MapRenderer(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,8 +33,8 @@ public sealed unsafe partial class MapRenderer
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
@@ -44,17 +44,17 @@ public sealed unsafe partial class MapRenderer
 
     public void initialize(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
     {
-        NativeMethods.TablePtr->hs_method_e56656e4((void*)_handle, (void*)map.Handle);
+        NativeMethods.TablePtr->C0.hs_method_e56656e4((void*)__hosihikari_shim_handle, (void*)map.Handle);
     }
 
     public bool isContextual()
     {
-        return NativeMethods.TablePtr->hs_method_adda0eac((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_adda0eac((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void render(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map, global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCanvas canvas, global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->hs_method_224059bb((void*)_handle, (void*)map.Handle, (void*)canvas.Handle, (void*)player.Handle);
+        NativeMethods.TablePtr->C0.hs_method_224059bb((void*)__hosihikari_shim_handle, (void*)map.Handle, (void*)canvas.Handle, (void*)player.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
@@ -63,7 +63,7 @@ public sealed unsafe partial class MapRenderer
 
     public static global::Hosihikari.Bindings.Abi.SharedHandle? CreateDirector(bool is_contextual, nint invoke, nint userData, nint release)
     {
-        var __hs_shared = NativeMethods.TablePtr->hs_director_06c8f948(is_contextual, (void*)invoke, (void*)userData, (void*)release);
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_director_06c8f948(is_contextual, (void*)invoke, (void*)userData, (void*)release);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 }

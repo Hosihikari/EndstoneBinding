@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class Mob
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public Mob(nint handle) : this(handle, true) { }
 
     internal Mob(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static Mob Borrow(nint handle) => new Mob(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,54 +33,54 @@ public sealed unsafe partial class Mob
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public int getHealth()
     {
-        return NativeMethods.TablePtr->hs_method_fcf492e7((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_fcf492e7((void*)__hosihikari_shim_handle);
     }
 
     public int getMaxHealth()
     {
-        return NativeMethods.TablePtr->hs_method_480f4712((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_480f4712((void*)__hosihikari_shim_handle);
     }
 
     public bool isGliding()
     {
-        return NativeMethods.TablePtr->hs_method_6a0ca04e((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_6a0ca04e((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void setHealth(int health)
     {
-        NativeMethods.TablePtr->hs_method_eca6ecbb((void*)_handle, health);
+        NativeMethods.TablePtr->C0.hs_method_eca6ecbb((void*)__hosihikari_shim_handle, health);
     }
 
     public void setMaxHealth(int health)
     {
-        NativeMethods.TablePtr->hs_method_3cecb4b6((void*)_handle, health);
+        NativeMethods.TablePtr->C0.hs_method_3cecb4b6((void*)__hosihikari_shim_handle, health);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor AsActor()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)NativeMethods.TablePtr->hs_cast_4dd89f46((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)NativeMethods.TablePtr->C0.hs_cast_4dd89f46((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender AsCommandSender()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_3637e39f((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->C0.hs_cast_3637e39f((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible AsPermissible()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_cast_61b1127c((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->C0.hs_cast_61b1127c((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? TryAsPlayer()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_56600815((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_56600815((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
     }
 }

@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class WritableBookMeta
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public WritableBookMeta(nint handle) : this(handle, true) { }
 
     internal WritableBookMeta(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static WritableBookMeta Borrow(nint handle) => new WritableBookMeta(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,14 +33,14 @@ public sealed unsafe partial class WritableBookMeta
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->hs_get_9fc270c4();
+        get => NativeMethods.TablePtr->C0.hs_get_9fc270c4();
     }
 
     public void addPage(string[] pages)
@@ -65,24 +65,24 @@ public sealed unsafe partial class WritableBookMeta
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            NativeMethods.TablePtr->hs_method_cd2e8ba7((void*)_handle, __hs_vectorData0, (nuint)(pages?.Length ?? 0));
+            NativeMethods.TablePtr->C0.hs_method_cd2e8ba7((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(pages?.Length ?? 0));
         }
     }
 
     public string getPage(int page)
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_a4b82fb7((void*)_handle, page);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_a4b82fb7((void*)__hosihikari_shim_handle, page);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPageCount()
     {
-        return NativeMethods.TablePtr->hs_method_40fe9057((void*)_handle);
+        return NativeMethods.TablePtr->C0.hs_method_40fe9057((void*)__hosihikari_shim_handle);
     }
 
     public string[] getPages()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_d2444a6f((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_d2444a6f((void*)__hosihikari_shim_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -94,7 +94,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public bool hasPages()
     {
-        return NativeMethods.TablePtr->hs_method_9a458a7f((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_9a458a7f((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void setPage(int page, string data)
@@ -112,7 +112,7 @@ public sealed unsafe partial class WritableBookMeta
         global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_8c15c058((void*)_handle, page, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            NativeMethods.TablePtr->C0.hs_method_8c15c058((void*)__hosihikari_shim_handle, page, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
@@ -138,18 +138,18 @@ public sealed unsafe partial class WritableBookMeta
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            NativeMethods.TablePtr->hs_method_3c78895a((void*)_handle, __hs_vectorData0, (nuint)(pages?.Length ?? 0));
+            NativeMethods.TablePtr->C0.hs_method_3c78895a((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(pages?.Length ?? 0));
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_4d728731((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->C0.hs_cast_4d728731((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BookMeta? TryAsBookMeta()
     {
-        var __hs_handle = NativeMethods.TablePtr->hs_cast_ce5da043((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_cast_ce5da043((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BookMeta((nint)__hs_handle, false) : null;
     }
 }

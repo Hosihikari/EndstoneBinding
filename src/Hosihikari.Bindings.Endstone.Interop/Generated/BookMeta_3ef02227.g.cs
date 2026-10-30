@@ -6,24 +6,24 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
 public sealed unsafe partial class BookMeta
 {
-    private nint _handle;
+    private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
 
     public BookMeta(nint handle) : this(handle, true) { }
 
     internal BookMeta(nint handle, bool ownsHandle)
     {
-        _handle = handle;
+        __hosihikari_shim_handle = handle;
         _ownsHandle = ownsHandle;
     }
 
     public static BookMeta Borrow(nint handle) => new BookMeta(handle, false);
 
-    public nint Handle => _handle;
+    public nint Handle => __hosihikari_shim_handle;
 
     internal nint ReleaseHandle()
     {
-        if (_handle == 0)
+        if (__hosihikari_shim_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
         }
@@ -33,48 +33,48 @@ public sealed unsafe partial class BookMeta
             throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
-        var __hs_handle = _handle;
-        _handle = 0;
+        var __hs_handle = __hosihikari_shim_handle;
+        __hosihikari_shim_handle = 0;
         return __hs_handle;
     }
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->hs_get_3dbd03f0();
+        get => NativeMethods.TablePtr->C0.hs_get_3dbd03f0();
     }
 
     public string getAuthor()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_bc9be099((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_bc9be099((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int? getGeneration()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->hs_method_ed1b4877((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_ed1b4877((void*)__hosihikari_shim_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->hs_method_414649b7((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_414649b7((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasAuthor()
     {
-        return NativeMethods.TablePtr->hs_method_a6474ca8((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_a6474ca8((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool hasGeneration()
     {
-        return NativeMethods.TablePtr->hs_method_9b523c2c((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_9b523c2c((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool hasTitle()
     {
-        return NativeMethods.TablePtr->hs_method_8a9362cc((void*)_handle) != 0;
+        return NativeMethods.TablePtr->C0.hs_method_8a9362cc((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void setAuthor(string? author)
@@ -92,13 +92,13 @@ public sealed unsafe partial class BookMeta
         global::System.Text.Encoding.UTF8.GetBytes(author ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_39e461d1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, author is not null);
+            NativeMethods.TablePtr->C0.hs_method_39e461d1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, author is not null);
         }
     }
 
     public void setGeneration(int? generation)
     {
-        NativeMethods.TablePtr->hs_method_70cefe27((void*)_handle, generation ?? default(int), generation.HasValue);
+        NativeMethods.TablePtr->C0.hs_method_70cefe27((void*)__hosihikari_shim_handle, generation ?? default(int), generation.HasValue);
     }
 
     public void setTitle(string? title)
@@ -116,17 +116,17 @@ public sealed unsafe partial class BookMeta
         global::System.Text.Encoding.UTF8.GetBytes(title ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_8567bdf4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, title is not null);
+            NativeMethods.TablePtr->C0.hs_method_8567bdf4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, title is not null);
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_598461ef((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->C0.hs_cast_598461ef((void*)__hosihikari_shim_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta AsWritableBookMeta()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta((nint)NativeMethods.TablePtr->hs_cast_bc4d3831((void*)_handle), false);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta((nint)NativeMethods.TablePtr->C0.hs_cast_bc4d3831((void*)__hosihikari_shim_handle), false);
     }
 }
